@@ -1,8 +1,11 @@
 package com.example.infomatch.ui.main;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.infomatch.R;
 import com.example.infomatch.databinding.ActivityMainBinding;
@@ -10,6 +13,10 @@ import com.example.infomatch.ui.mainManu.MainManuFragment;
 import com.example.infomatch.ui.mainManu.MainManuViewModel;
 
 public class MainActivity extends AppCompatActivity {
+
+
+    private ActivityMainBinding binding;
+    private MainManuViewModel mainMenuViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
