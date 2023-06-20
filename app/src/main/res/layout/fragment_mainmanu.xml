@@ -41,6 +41,19 @@
         app:layout_constraintTop_toBottomOf="@+id/high_score"
         app:layout_constraintVertical_bias="0.333" />
 
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/Start_game"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.169"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
 
     <!--    הכפתור של משחק יקפיץ חלון פוף אף אשר ייתין לשחקן לשחקן לבחור כמה זוגות קלפים היה במשחק/תיימיר/ או משחק מיוחד ואחרי מילוי הפרטים יעביר אותו לפרגמנט של המשחק עצמו והכפתור השני שולח אותו לטבלה של הציונים הגבוהים של מי ששיחקו במשחק הזה במכשיר-->
 </androidx.constraintlayout.widget.ConstraintLayout>

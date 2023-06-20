@@ -28,4 +28,8 @@ public class MainManuFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+    public MainManuViewModel getViewModel() {
+        return this.mainMenuViewModel;
+    }
 }
