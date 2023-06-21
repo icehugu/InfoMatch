@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.infomatch.databinding.FragmentGameBinding;
 import com.example.infomatch.databinding.FragmentMainmanuBinding;
@@ -15,6 +16,7 @@ import com.example.infomatch.databinding.FragmentMainmanuBinding;
 public class GameFragment extends Fragment {
 
     private FragmentGameBinding binding;
+    private GameViewModel gameViewModel;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

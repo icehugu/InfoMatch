@@ -1,4 +1,11 @@
 package com.example.infomatch.ui.game;
 
-public class GameViewModel {
+
+import androidx.lifecycle.ViewModel;
+
+public class GameViewModel extends ViewModel {
+
+    public Boolean timer;
+    public int cardsAmount;
+    public String userName;
 }
