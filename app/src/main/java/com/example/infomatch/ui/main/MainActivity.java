@@ -23,33 +23,39 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        View view = binding.getRoot();
-        setContentView(view);
-
-        Button mButton = binding.enterButton;
-        mainMenuViewModel = new ViewModelProvider(this).get(MainManuViewModel.class);
-
-        final androidx.fragment.app
-                .FragmentManager mFragmentManager
-                = getSupportFragmentManager();
-        final androidx.fragment.app
-                .FragmentTransaction mFragmentTransaction
-                = mFragmentManager.beginTransaction();
-        final MainManuFragment mFragment
-                = new MainManuFragment();
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(binding.userName.getText().toString() != null) {
-                    mainMenuViewModel.username = binding.userName.getText().toString();
-                }
-//                Bundle mBundle = new Bundle();
-//                mBundle.putString("mText", binding.userName.getText().toString());
-//                mFragment. = mBundle;
-//                mFragmentTransaction.add(R.id.frameLayout, mFragment).commit();
-            }
-        });
+//        binding = ActivityMainBinding.inflate(getLayoutInflater());
+//        View view = binding.getRoot();
+//        setContentView(view);
+//
+//        Button mButton = binding.enterButton;
+//        mainMenuViewModel = new ViewModelProvider(this).get(MainManuViewModel.class);
+//
+////        final androidx.fragment.app
+////                .FragmentManager mFragmentManager
+////                = getSupportFragmentManager();
+////        final androidx.fragment.app
+////                .FragmentTransaction mFragmentTransaction
+////                = mFragmentManager.beginTransaction();
+////        final MainManuFragment mFragment
+////                = new MainManuFragment();
+//        mButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(binding.userName.getText().toString() != null) {
+//                    mainMenuViewModel.username = binding.userName.getText().toString();
+//                }
+//                Intent intent = new Intent(MainActivity.this, MainManuFragment.class);
+//                startActivity(intent);
+////                NavController navController = Navigation.findNavController(MainActivity.this, R.id.mainManuFragment);
+////                navController.navigateUp();
+////                navController.navigate(R.id.mainManuFragment);
+////                Bundle mBundle = new Bundle();
+////                mBundle.putString("mText", binding.userName.getText().toString());
+////                mFragment. = mBundle;
+////                mFragmentTransaction.add(R.id.frameLayout, mFragment).commit();
+//
+//            }
+//        });
 
 
 

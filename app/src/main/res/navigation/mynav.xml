@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mynav"
+    app:startDestination="@id/mainManuFragment">
+
+    <fragment
+        android:id="@+id/mainManuFragment"
+        android:name="com.example.infomatch.ui.mainManu.MainManuFragment"
+        android:label="MainManuFragment" >
+        <action
+            android:id="@+id/action_mainManuFragment_to_highScoreFragment"
+            app:destination="@id/highScoreFragment" />
+        <action
+            android:id="@+id/action_mainManuFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.infomatch.ui.main.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/highScoreFragment"
+        android:name="com.example.infomatch.ui.highScore.HighScoreFragment"
+        android:label="HighScoreFragment" >
+        <action
+            android:id="@+id/action_highScoreFragment_to_mainManuFragment"
+            app:destination="@id/mainManuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.example.infomatch.ui.game.GameFragment"
+        android:label="GameFragment" >
+        <action
+            android:id="@+id/action_gameFragment_to_mainManuFragment"
+            app:destination="@id/mainManuFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/gameSettingsDialog"
+        android:name="com.example.infomatch.ui.mainManu.GameSettingsDialog"
+        android:label="GameSettingsDialog" >
+        <action
+            android:id="@+id/action_gameSettingsDialog_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </dialog>
+</navigation>

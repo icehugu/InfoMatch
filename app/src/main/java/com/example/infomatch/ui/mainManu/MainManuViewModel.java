@@ -5,5 +5,9 @@ import androidx.lifecycle.ViewModel;
 
 public class MainManuViewModel extends ViewModel {
 
-    public String username = null;
+    public String username = "tester";
+    public int pairs;
+    public Boolean timer;
+
+
 }

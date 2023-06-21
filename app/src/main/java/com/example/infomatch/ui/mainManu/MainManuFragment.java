@@ -1,6 +1,14 @@
 package com.example.infomatch.ui.mainManu;
 
+
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +31,36 @@ public class MainManuFragment extends Fragment {
         View view = binding.getRoot();
         mainMenuViewModel = new ViewModelProvider(this).get(MainManuViewModel.class);
         if (mainMenuViewModel.username != null) binding.userName.setText(mainMenuViewModel.username);
+        binding.highScoreBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("MainManuFragment", "click");
+                Navigation.findNavController(v).navigate(R.id.action_mainManuFragment_to_highScoreFragment);
+            }
+        });
+
+        binding.startGameBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                showDialog(new DialogCallback() {
+//
+//                    @Override
+//                    public void setTimer(Boolean timer) {
+//                         gameViewModel.timer= timer;
+//                    }
+//
+//                    @Override
+//                    public void setCardsAmount(int cardsAmount) {
+//                        gameViewModel.cardsAmount = cardsAmount;
+//                    }
+//                });
+
+               dialog.show(getParentFragmentManager(), "settings");
+
+            }
+        });
+
+
         return view;
     }
 
@@ -31,6 +69,8 @@ public class MainManuFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+
 
     public MainManuViewModel getViewModel() {
         return this.mainMenuViewModel;

@@ -1,4 +1,6 @@
 package com.example.infomatch.ui.highScore;
 
-public class HighScoreViewModel {
+import androidx.lifecycle.ViewModel;
+
+public class HighScoreViewModel extends ViewModel {
 }

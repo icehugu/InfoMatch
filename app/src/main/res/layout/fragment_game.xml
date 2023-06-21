@@ -7,45 +7,50 @@
     tools:context="ui.game.GameFragment">
 
     <EditText
-        android:id="@+id/editTextTime"
+        android:id="@+id/timer"
         android:layout_width="127dp"
         android:layout_height="38dp"
         android:layout_marginStart="28dp"
+        android:layout_marginEnd="92dp"
         android:ems="10"
         android:inputType="time"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextNumber"
+        android:text="0"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/score"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.323"
-        app:layout_constraintStart_toEndOf="@+id/editTextNumber"
-        app:layout_constraintTop_toTopOf="@+id/editTextNumber"
-        app:layout_constraintVertical_bias="0.157" />
+        app:layout_constraintHorizontal_bias="0.078"
+        app:layout_constraintStart_toEndOf="@+id/score"
+        app:layout_constraintTop_toTopOf="@+id/score"
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
-        android:id="@+id/editTextNumber"
+        android:id="@+id/score"
         android:layout_width="123dp"
         android:layout_height="46dp"
         android:ems="10"
         android:inputType="number"
+        android:text="0"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.288"
+        app:layout_constraintHorizontal_bias="0.197"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.141" />
+        app:layout_constraintVertical_bias="0.093" />
 
     <Button
         android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Manu"
+        android:text="@string/manu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.949"
+        app:layout_constraintHorizontal_bias="0.981"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023" />
 
-<!--    במרכז המסך היה את הקלפים של המשחק הכמות תהיה תלויה בסוג המשחק-->
+    <!--    במרכז המסך היה את הקלפים של המשחק הכמות תהיה תלויה בסוג המשחק-->
 <!--לעבור על איך ליצור כפתורים שהיו הקלפים בצורה שהמיקום שלהם היה תלוי אחד בשני וכך ישאר יציב-->
 <!--כאשר משחק נגמר ההודעה על תוצאות המחשק תהיה בdiealog ולא בפרגמנט חדש לבודעה הזאת תהיה גם בחירה של לשחק שוב או חזרה לתפריט הראשי-->
 </androidx.constraintlayout.widget.ConstraintLayout>

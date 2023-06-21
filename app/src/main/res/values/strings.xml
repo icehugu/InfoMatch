@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">InfoMatch</string>
+    <string name="high_score">high score</string>
+    <string name="exit">exit</string>
+    <string name="start_game">start game</string>
+    <string name="place_holder">Place Holder</string>
+    <string name="back">back</string>
+    <string name="manu">Manu</string>
+    <string name="choose_number_of_pairs">choose number of pairs</string>
+    <string name="set_timer">set timer</string>
+    <string name="no_timer">no timer</string>
+    <string name="yes_timer">yes timer</string>
+    <string-array name="cards_amount">
+        <item>"12"</item>
+        <item>"24"</item>
+        <item>"36"</item>
+    </string-array>
 </resources>

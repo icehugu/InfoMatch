@@ -20,6 +20,7 @@ public class GameFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentGameBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
+        gameViewModel = new ViewModelProvider(this).get(GameViewModel.class);
         return view;
     }
 
