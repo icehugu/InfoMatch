@@ -50,6 +50,32 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023" />
 
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022" />
+
+
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/cards_grid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/score"
+        app:layout_constraintVertical_bias="0.515">
+
+    </androidx.gridlayout.widget.GridLayout>
+
     <!--    במרכז המסך היה את הקלפים של המשחק הכמות תהיה תלויה בסוג המשחק-->
 <!--לעבור על איך ליצור כפתורים שהיו הקלפים בצורה שהמיקום שלהם היה תלוי אחד בשני וכך ישאר יציב-->
 <!--כאשר משחק נגמר ההודעה על תוצאות המחשק תהיה בdiealog ולא בפרגמנט חדש לבודעה הזאת תהיה גם בחירה של לשחק שוב או חזרה לתפריט הראשי-->

@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_mainManuFragment_to_gameFragment"
             app:destination="@id/gameFragment" />
+        <action
+            android:id="@+id/action_mainManuFragment_to_gameSettingsDialog"
+            app:destination="@id/gameSettingsDialog" />
     </fragment>
     <activity
         android:id="@+id/mainActivity"
@@ -40,6 +43,10 @@
         <action
             android:id="@+id/action_gameFragment_to_mainManuFragment"
             app:destination="@id/mainManuFragment" />
+        <argument
+            android:name="userName"
+            app:argType="string"
+            android:defaultValue='"name"' />
     </fragment>
     <dialog
         android:id="@+id/gameSettingsDialog"

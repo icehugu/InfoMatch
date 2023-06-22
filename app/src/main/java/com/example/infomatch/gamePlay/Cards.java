@@ -1,25 +1,36 @@
 package com.example.infomatch.gamePlay;
 
+import android.util.Log;
+
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Random;
 
 public class Cards {
 
     private int numOfPairs;
     private String[] qArray;
     private String[] aArray;
+
+    private Integer[] iArray;
     private HashMap<String, String> qaPair;
     private Card[] cArray;
 
     public Cards(int numOfPairs, String[] qArray, String[] aArray) {
         this.numOfPairs = numOfPairs;
-//        this.qArray = qArray;
-//        this.aArray = aArray;
         this.qaPair = new HashMap<String, String>();
-        for(int i =0;i<6;i++) {
-            this.qaPair.put("q" + i,"a" + i);
-            //this.cArray[i * 2].setContent("q" + i * 2);
-            //this.cArray[i * 2 + 1].setContent("q" + i * 2 + 1);
+        this.iArray = new Integer[aArray.length];
+        for (int i = 0; i < iArray.length; i++) {
+            iArray[i] = i;
         }
+
+        Collections.shuffle(Arrays.asList(iArray));
+
+        for (int i = 0; i<numOfPairs/2;i++) {
+            this.qaPair.put(qArray[iArray[i]],aArray[iArray[i]]);
+        }
+
     }
 
     public void setNumOfPairs(int numOfPairs) {
@@ -38,6 +49,5 @@ public class Cards {
     public void setcArray(Card[] cArray) {
         this.cArray = cArray;
     }
-
 
 }
