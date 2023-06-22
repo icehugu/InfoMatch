@@ -28,6 +28,10 @@
         <action
             android:id="@+id/action_highScoreFragment_to_mainManuFragment"
             app:destination="@id/mainManuFragment" />
+        <argument
+            android:name="userName"
+            app:argType="string"
+            android:defaultValue='"no name"' />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"

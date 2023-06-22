@@ -16,5 +16,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.947" />
-<!--    לעשות רשימה מresacle view אשר תראה את התוצאות של כול המשחקים הקודמים-->
+
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <!--    לעשות רשימה מresacle view אשר תראה את התוצאות של כול המשחקים הקודמים-->
 </androidx.constraintlayout.widget.ConstraintLayout>

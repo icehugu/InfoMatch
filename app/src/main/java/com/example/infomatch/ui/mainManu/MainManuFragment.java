@@ -60,7 +60,10 @@ public class MainManuFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Log.d("MainManuFragment", "click");
-                Navigation.findNavController(v).navigate(R.id.action_mainManuFragment_to_highScoreFragment);
+                Bundle bundle = new Bundle();
+                String userName = mainMenuViewModel.username;
+                bundle.putString("userName", userName);
+                Navigation.findNavController(v).navigate(R.id.action_mainManuFragment_to_highScoreFragment, bundle);
             }
         });
 

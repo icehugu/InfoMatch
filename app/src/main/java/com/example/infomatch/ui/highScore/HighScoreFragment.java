@@ -23,10 +23,12 @@ public class HighScoreFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentHighscoreBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
+        binding.userName.setText(getArguments().getString("userName"));
         binding.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("MainManuFragment", "click");
+
                 Navigation.findNavController(v).navigate(R.id.action_highScoreFragment_to_mainManuFragment);
             }
         });
