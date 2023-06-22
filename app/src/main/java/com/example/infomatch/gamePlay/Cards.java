@@ -50,4 +50,9 @@ public class Cards {
         this.cArray = cArray;
     }
 
+    public HashMap<String, String> getQaPair() {
+        return this.qaPair;
+    }
+
+
 }

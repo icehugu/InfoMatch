@@ -33,15 +33,6 @@ import com.example.infomatch.ui.game.GameViewModel;
 
 public class MainManuFragment extends Fragment {
 
-    public void setTimer(Boolean timer) {
-
-    }
-
-
-    public void setCardsAmount(int cardsAmount) {
-        Toast.makeText(getActivity(), cardsAmount + " is selected", Toast.LENGTH_SHORT).show();
-    }
-    private int cardsAmountChoice;
     private FragmentMainmanuBinding binding;
     private MainManuViewModel mainMenuViewModel ;
     private GameSettingsDialog dialog;
@@ -50,7 +41,6 @@ public class MainManuFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentMainmanuBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-//        dialog = new Dialog(getActivity());
         mainMenuViewModel = new ViewModelProvider(this).get(MainManuViewModel.class);
         dialog = new GameSettingsDialog();
         if (mainMenuViewModel.username != null) binding.userName.setText(mainMenuViewModel.username);

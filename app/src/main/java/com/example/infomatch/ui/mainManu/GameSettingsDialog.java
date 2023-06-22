@@ -30,26 +30,6 @@ public  class GameSettingsDialog extends DialogFragment {
     private GameViewModel gameViewModel;
     private int cardsAmountChoice;
 
-
-//    @Override
-//    public void onAttachFragment(@NonNull Fragment childFragment) {
-//        super.onAttachFragment(childFragment);
-//        listener = (DialogCallback) childFragment;
-//     }
-//    @Override
-//    public void onAttach(@NonNull Context context) {
-//        super.onAttach(context);
-//        try {
-//            // Instantiate the NoticeDialogListener so we can send events to the host
-//            listener = (DialogCallback) context;
-//        } catch (ClassCastException e) {
-//            // The activity doesn't implement the interface, throw exception
-//            throw new ClassCastException(getActivity().toString()
-//                    + " must implement NoticeDialogListener");
-//        }
-//
-//    }
-
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -61,7 +41,6 @@ public  class GameSettingsDialog extends DialogFragment {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(requireContext(),
                 R.array.cards_amount, android.R.layout.simple_spinner_item);
 
-        Boolean timerChoice;
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.radiogroup);
         spinner.setAdapter(adapter);
@@ -81,6 +60,8 @@ public  class GameSettingsDialog extends DialogFragment {
                 .setPositiveButton("Start", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
+                        Bundle bundle = new Bundle();
+                        bundle.putString("userName", getArguments().getString("userName"));
                         int selectedId = radioGroup.getCheckedRadioButtonId();
                         RadioButton radioButton = (RadioButton) radioGroup.findViewById(selectedId);
                         if (radioButton.getText().toString().equals("yes timer") ) {
@@ -90,14 +71,12 @@ public  class GameSettingsDialog extends DialogFragment {
                             gameViewModel.timer = false;
                         }
                         gameViewModel.cardsAmount = cardsAmountChoice;
-                        Navigation.findNavController(getParentFragment().getView()).navigate(R.id.action_mainManuFragment_to_gameFragment);
-                        //listener.setTimer();
+                        Navigation.findNavController(getParentFragment().getView()).navigate(R.id.action_gameSettingsDialog_to_gameFragment, bundle);
                     }
                 })
                 .setNegativeButton("Other time!", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        //listener.onDialogNegativeClick(GameSettingsDialog.this);
                     }
                 });
         return builder.create();

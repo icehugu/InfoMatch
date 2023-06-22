@@ -1,14 +1,18 @@
 package com.example.infomatch.ui.game;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.gridlayout.widget.GridLayout;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.infomatch.databinding.FragmentGameBinding;
@@ -27,7 +31,10 @@ public class GameFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentGameBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        gameViewModel = new ViewModelProvider(getActivity()).get(GameViewModel.class);
+        Button[] gridButtons = new Button[12];
+        gameViewModel = new ViewModelProvider(requireActivity()).get(GameViewModel.class);
+        binding.userName.setText(getArguments().getString("userName"));
+        gameViewModel.userName = getArguments().getString("userName");
         if (gameViewModel.timer == true) binding.timer.setText("100");
         binding.score.setText(String.valueOf(gameViewModel.cardsAmount));
         gameViewModel.setCardGame();
