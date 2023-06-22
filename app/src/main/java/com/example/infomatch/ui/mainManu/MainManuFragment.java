@@ -44,7 +44,6 @@ public class MainManuFragment extends Fragment {
     private int cardsAmountChoice;
     private FragmentMainmanuBinding binding;
     private MainManuViewModel mainMenuViewModel ;
-    private GameViewModel gameViewModel;
     private GameSettingsDialog dialog;
     @Nullable
     @Override
@@ -53,8 +52,7 @@ public class MainManuFragment extends Fragment {
         View view = binding.getRoot();
 //        dialog = new Dialog(getActivity());
         mainMenuViewModel = new ViewModelProvider(this).get(MainManuViewModel.class);
-        gameViewModel = new ViewModelProvider(this).get(GameViewModel.class);
-        dialog = new GameSettingsDialog(gameViewModel);
+        dialog = new GameSettingsDialog();
         if (mainMenuViewModel.username != null) binding.userName.setText(mainMenuViewModel.username);
         binding.highScoreBtn.setOnClickListener(new View.OnClickListener() {
             @Override

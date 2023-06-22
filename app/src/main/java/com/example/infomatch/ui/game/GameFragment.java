@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,7 +23,10 @@ public class GameFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentGameBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        gameViewModel = new ViewModelProvider(this).get(GameViewModel.class);
+        gameViewModel = new ViewModelProvider(getActivity()).get(GameViewModel.class);
+        if (gameViewModel.timer == true) binding.timer.setText("100");
+        binding.score.setText(String.valueOf(gameViewModel.cardsAmount));
+
         return view;
     }
 

@@ -12,11 +12,13 @@ import android.widget.ArrayAdapter;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.infomatch.R;
@@ -27,18 +29,7 @@ public  class GameSettingsDialog extends DialogFragment {
 
     private GameViewModel gameViewModel;
     private int cardsAmountChoice;
-    public GameSettingsDialog(GameViewModel gameViewModel) {
-        this.gameViewModel = gameViewModel;
-    }
 
-
-
-    public interface DialogCallback {
-        public void setTimer(Boolean timer);
-        public void setCardsAmount(int cardsAmount);
-    }
-
-   DialogCallback listener;
 
 //    @Override
 //    public void onAttachFragment(@NonNull Fragment childFragment) {
@@ -62,6 +53,7 @@ public  class GameSettingsDialog extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+        gameViewModel = new ViewModelProvider(requireActivity()).get(GameViewModel.class);
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         final View view = inflater.inflate(R.layout.game_settings, null);
@@ -90,10 +82,14 @@ public  class GameSettingsDialog extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         int selectedId = radioGroup.getCheckedRadioButtonId();
-                        gameViewModel.cardsAmount = cardsAmountChoice;
                         RadioButton radioButton = (RadioButton) radioGroup.findViewById(selectedId);
-                        if (radioButton.getText() == "yes timer") gameViewModel.timer = true;
-                        else if (radioButton.getText() == "no timer") gameViewModel.timer = false;
+                        if (radioButton.getText().toString().equals("yes timer") ) {
+                            gameViewModel.timer = true;
+                        }
+                        else if (radioButton.getText().toString().equals("no timer")) {
+                            gameViewModel.timer = false;
+                        }
+                        gameViewModel.cardsAmount = cardsAmountChoice;
                         Navigation.findNavController(getParentFragment().getView()).navigate(R.id.action_mainManuFragment_to_gameFragment);
                         //listener.setTimer();
                     }
