@@ -64,15 +64,8 @@ public class GameFragment extends Fragment {
         Collections.shuffle(Arrays.asList(cardsPositionsArray));
         //Random random = new Random();
         for (int i = 0; i < 6; i++) {
-            //String getRandomCard = String.valueOf(random.nextInt(12 - 0) + 0);
-//            Log.d("id check", cardsPositionsArray[(i*2)] + " " + cardsPositionsArray[(i*2) + 1]);
-//            int id1 = getResources().getIdentifier("button"+cardsPositionsArray[(i*2)], "id", getContext().getPackageName());
-//            int id2 = getResources().getIdentifier("button"+cardsPositionsArray[(i*2) + 1], "id", getContext().getPackageName());
-//            Log.d("id", String.valueOf(id1) + " " + String.valueOf(id2));
-//            gridButtons[i*2] = (Button) gridLayout.findViewById(id1);
-//            gridButtons[(i*2)+1] = (Button) gridLayout.findViewById(id2);
-            gridButtons[i*2].setText(gameViewModel.cardGame.getQaPair().keySet().toArray()[i].toString());
-            gridButtons[(i*2)+1].setText(gameViewModel.cardGame.getQaPair().get(gameViewModel.cardGame.getQaPair().keySet().toArray()[i].toString()));
+            gridButtons[cardsPositionsArray[i*2]].setText(gameViewModel.cardGame.getQaPair().keySet().toArray()[i].toString());
+            gridButtons[cardsPositionsArray[(i*2)+1]].setText(gameViewModel.cardGame.getQaPair().get(gameViewModel.cardGame.getQaPair().keySet().toArray()[i].toString()));
         }
 
         return view;

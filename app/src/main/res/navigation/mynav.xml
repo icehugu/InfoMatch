@@ -47,6 +47,9 @@
             android:name="userName"
             app:argType="string"
             android:defaultValue='"name"' />
+        <action
+            android:id="@+id/action_gameFragment_to_pauseGameMenuDialog"
+            app:destination="@id/pauseGameMenuDialog" />
     </fragment>
     <dialog
         android:id="@+id/gameSettingsDialog"
@@ -54,6 +57,17 @@
         android:label="GameSettingsDialog" >
         <action
             android:id="@+id/action_gameSettingsDialog_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </dialog>
+    <dialog
+        android:id="@+id/pauseGameMenuDialog"
+        android:name="com.example.infomatch.ui.game.PauseGameMenuDialog"
+        android:label="PauseGameMenuDialog" >
+        <action
+            android:id="@+id/action_pauseGameMenuDialog_to_mainManuFragment"
+            app:destination="@id/mainManuFragment" />
+        <action
+            android:id="@+id/action_pauseGameMenuDialog_to_gameFragment"
             app:destination="@id/gameFragment" />
     </dialog>
 </navigation>

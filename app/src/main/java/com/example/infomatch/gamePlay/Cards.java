@@ -50,6 +50,26 @@ public class Cards {
         this.cArray = cArray;
     }
 
+    public int getNumOfPairs() {
+        return numOfPairs;
+    }
+
+    public String[] getqArray() {
+        return qArray;
+    }
+
+    public String[] getaArray() {
+        return aArray;
+    }
+
+    public Integer[] getiArray() {
+        return iArray;
+    }
+
+    public Card[] getcArray() {
+        return cArray;
+    }
+
     public HashMap<String, String> getQaPair() {
         return this.qaPair;
     }
