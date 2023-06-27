@@ -31,7 +31,8 @@ public class PauseGameMenuDialog extends DialogFragment {
         buttonReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                gameViewModel.timerResume();
+                Navigation.findNavController(getParentFragment().getView()).popBackStack();
             }
         });
 

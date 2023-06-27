@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModel;
 import com.example.infomatch.gamePlay.Cards;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 
 public class GameViewModel extends ViewModel {
@@ -36,6 +37,8 @@ public class GameViewModel extends ViewModel {
     Button button2 = null;
 
     public CountDownTimer countDownTimer;
+
+    Button[] gridButtons = new Button[12];
 
     public void setCardGame() {
         this.cardGame = new Cards(cardsAmount,qArray,aArray);

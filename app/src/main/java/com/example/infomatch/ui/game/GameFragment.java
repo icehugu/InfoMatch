@@ -115,8 +115,6 @@ public class GameFragment extends Fragment {
             gridButtons[cardsPositionsArray[(i*2)+1]].setText(gameViewModel.cardGame.getQaPair().get(gameViewModel.cardGame.getQaPair().keySet().toArray()[i].toString()));
         }
 
-
-
         return view;
     }
 
