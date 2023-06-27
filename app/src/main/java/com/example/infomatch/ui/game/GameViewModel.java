@@ -5,6 +5,8 @@ import android.app.Application;
 import android.os.CountDownTimer;
 import android.widget.Button;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.infomatch.gamePlay.Cards;
@@ -19,9 +21,14 @@ public class GameViewModel extends ViewModel {
     public Boolean timer = null;
     public int cardsAmount = 10;
     public String userName;
-
     public int pairsFound = 0;
+    private MutableLiveData<Long> timerLiveData;
 
+    public GameViewModel() {
+        this.timerLiveData = new MutableLiveData<>();
+    }
+
+    private long milliLeft;
     public String qArray[] = new String[] {
             "q0", "q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9", "q10", "q11", "q12", "q13", "q14", "q15", "q16","q17" };
 
@@ -65,6 +72,47 @@ public class GameViewModel extends ViewModel {
             }
         }
         return false;
+    }
+
+    public void startTimer(long timeLengthMilli) {
+
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+        }
+
+        countDownTimer = new CountDownTimer(timeLengthMilli, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                timerLiveData.setValue(millisUntilFinished / 1000);
+                milliLeft = millisUntilFinished;
+            }
+
+            public void onFinish() {
+                //mTextField.setText("done!");
+            }
+        };
+
+        countDownTimer.start();
+
+    }
+
+    public void timerPause() {
+        countDownTimer.cancel();
+    }
+
+    public void timerResume() {
+        startTimer(milliLeft);
+    }
+
+    public void timerCancel() {
+        countDownTimer.cancel();
+        milliLeft = 0L;
+    }
+
+
+
+    public LiveData<Long> getTimerLiveData() {
+        return timerLiveData;
     }
 }
 

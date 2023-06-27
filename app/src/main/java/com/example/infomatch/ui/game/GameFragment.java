@@ -48,11 +48,11 @@ public class GameFragment extends Fragment {
         if (gameViewModel.timer == true) binding.timer.setText("100");
         binding.score.setText(String.valueOf(gameViewModel.cardsAmount));
         gameViewModel.setCardGame();
-        startTimer(gameViewModel.cardsAmount*5000);
+        gameViewModel.startTimer(gameViewModel.cardsAmount*5000);
         binding.pauseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                timerPause();
+                gameViewModel.timerPause();
                 Navigation.findNavController(v).navigate(R.id.action_gameFragment_to_pauseGameMenuDialog);
             }
         });
@@ -95,7 +95,7 @@ public class GameFragment extends Fragment {
                                     gameViewModel.button2 = null;
                                     gameViewModel.pairsFound++;
                                     if(gameViewModel.pairsFound==6) {
-                                        timer.cancel();
+                                        gameViewModel.timerCancel();
                                     }
 
                                 }
@@ -118,28 +118,34 @@ public class GameFragment extends Fragment {
         return view;
     }
 
-    public void startTimer(long timeLengthMilli) {
-        timer = new CountDownTimer(timeLengthMilli, 1000) {
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-            public void onTick(long millisUntilFinished) {
-                binding.timer.setText("" + millisUntilFinished / 1000);
-                milliLeft = millisUntilFinished;
-            }
-
-            public void onFinish() {
-                //mTextField.setText("done!");
-            }
-        }.start();
-
+        gameViewModel.getTimerLiveData().observe(getViewLifecycleOwner(), timeLeft -> binding.timer.setText(timeLeft.toString()));
     }
+//    public void startTimer(long timeLengthMilli) {
+//        timer = new CountDownTimer(timeLengthMilli, 1000) {
+//
+//            public void onTick(long millisUntilFinished) {
+//                binding.timer.setText("" + millisUntilFinished / 1000);
+//                milliLeft = millisUntilFinished;
+//            }
+//
+//            public void onFinish() {
+//                //mTextField.setText("done!");
+//            }
+//        }.start();
+//
+//    }
 
-    public void timerPause() {
-        timer.cancel();
-    }
+//    public void timerPause() {
+//        timer.cancel();
+//    }
 
-    private void timerResume() {
-        startTimer(milliLeft);
-    }
+//    private void timerResume() {
+//        startTimer(milliLeft);
+//    }
 
     @Override
     public void onDestroyView() {
