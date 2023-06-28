@@ -23,11 +23,15 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.infomatch.R;
+import com.example.infomatch.data.GameDataDao;
+import com.example.infomatch.data.GameResult;
 import com.example.infomatch.databinding.FragmentGameBinding;
 import com.example.infomatch.databinding.FragmentMainmanuBinding;
 
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.Random;
 
 public class GameFragment extends Fragment {
@@ -124,13 +128,20 @@ public class GameFragment extends Fragment {
         gameViewModel.getTimerLiveData().observe(getViewLifecycleOwner(), timeLeft -> binding.timer.setText(timeLeft.toString()));
         gameViewModel.getGameEndLiveData().observe(getViewLifecycleOwner(), endGame -> {
             if (endGame){
-                Toast.makeText(requireContext(), "pairs is: " + gameViewModel.pairsFound, Toast.LENGTH_SHORT);
-                Log.d("toast", "toast");
-                //gameViewModel.setGameEnd();
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 if(gameViewModel.pairsFound==6) {
+                    Calendar calendarInstance = Calendar.getInstance();
+                    String currentDateAndTime = calendarInstance.get(Calendar.DAY_OF_MONTH) + "." +
+                           "." + (calendarInstance.get(Calendar.MONTH) + 1) +  "." + calendarInstance.get(Calendar.YEAR) +
+                             "   "  + calendarInstance.get(Calendar.HOUR_OF_DAY) + ":" + calendarInstance.get(Calendar.MINUTE);
+                    GameResult gr = new GameResult(binding.userName.getText().toString(),
+                            Integer.parseInt(binding.score.getText().toString()),
+                            Double.parseDouble(binding.timer.getText().toString()),
+                            gameViewModel.pairsFound,
+                            currentDateAndTime);
+                    
+                    gameViewModel.addItem(gr);
 
-                    //Navigation.findNavController(view).popBackStack(R.id.mainManuFragment, false);
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                     builder.setMessage(gameViewModel.userName + " you have won! \n" +
                                     "Your score is " + binding.score.getText().toString() + "\n" +
                                     "Your time left is " + binding.timer.getText().toString() + "seconds \n" +
@@ -157,7 +168,6 @@ public class GameFragment extends Fragment {
 
                 }
                 else{
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                     builder.setMessage(gameViewModel.userName +" you have lost! \n" +
                                     "Your score is " + binding.score.getText().toString() + "\n" +
                                     "You have found " + gameViewModel.pairsFound + " pairs")

@@ -10,9 +10,13 @@ import java.util.List;
 
 public class GameDataRepository {
 
-    private AppDataBase db;
+    private GameDataDao gameDataDao;
+
     public GameDataRepository(Context context) {
-        db = AppDataBase.getDatabase(context);
+
+        AppDataBase db = AppDataBase.getDatabase(context);
+        gameDataDao = db.gameDataDao();
+
     }
 //    fun getExercises(workoutId: String) = exerciseDao?.getExercises(workoutId)
 //
@@ -27,15 +31,17 @@ public class GameDataRepository {
 //    fun getItem(id: Int) = exerciseDao?.getExercise(id)
 
     public List<GameResult> getAll() {
-        return db.userDao().getAll();
+        return gameDataDao.getAll();
     }
 
     public void insert(GameResult gameResult) {
-        db.userDao().insert(gameResult);
+        AppDataBase.databaseWriteExecutor.execute(() -> {
+            gameDataDao.insert(gameResult);
+        });
     }
 
     public void delete(GameResult gameResult) {
-        db.userDao().delete(gameResult);
+        gameDataDao.delete(gameResult);
     }
 
 }

@@ -8,8 +8,8 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "gameresult")
 public class GameResult {
 
-    @PrimaryKey
-    private int uid;
+    @PrimaryKey(autoGenerate = true)
+    private int uid = 0;
     @ColumnInfo(name = "username")
     private String name;
     @ColumnInfo(name = "score")
@@ -18,12 +18,15 @@ public class GameResult {
     private int numOfPairs;
     @ColumnInfo(name = "time")
     private double time;
+    @ColumnInfo(name = "dateAndTime")
+    private String dateAndTime;
 
-    public GameResult(String name, int score, double time,int numOfPairs) {
+    public GameResult(String name, int score, double time,int numOfPairs, String dateAndTime) {
         setName(name);
         setScore(score);
         setTime(time);
         setNumOfPairs(numOfPairs);
+        setDateAndTime(dateAndTime);
     }
 
     public void setUid(int uid) {
