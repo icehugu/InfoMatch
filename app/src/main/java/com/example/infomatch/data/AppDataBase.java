@@ -14,15 +14,15 @@ public abstract class AppDataBase extends RoomDatabase {
     public abstract GameDataDao userDao();
 
 
-    private AppDataBase instance = null;
+    private static AppDataBase instance = null;
 
 //    fun getDatabase(context: Context) = instance ?: synchronized(this) {
 //        Room.databaseBuilder(context.applicationContext, WorkoutItemDatabase::class.java, "db")
 //                    .build()
 //    }
 
-    public AppDataBase getDatabase(Context context) {
-        instance = Room.databaseBuilder(context.getApplicationContext(), AppDataBase::class.java, "db").build();
+    public static AppDataBase getDatabase(Context context) {
+        instance = Room.databaseBuilder(context.getApplicationContext(), AppDataBase.class, "db").build();
         return instance;
     }
 }

@@ -1,7 +1,9 @@
 package com.example.infomatch.data;
 
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 @Entity(tableName = "gameresult")
 public class GameResult {
@@ -10,9 +12,11 @@ public class GameResult {
     private int uid;
     @ColumnInfo(name = "username")
     private String name;
+    @ColumnInfo(name = "score")
     private int score;
     @ColumnInfo(name = "pairs")
     private int numOfPairs;
+    @ColumnInfo(name = "time")
     private double time;
 
     public GameResult(String name, int score, double time,int numOfPairs) {

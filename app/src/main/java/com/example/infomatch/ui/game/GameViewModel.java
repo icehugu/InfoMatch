@@ -5,19 +5,22 @@ import android.app.Application;
 import android.os.CountDownTimer;
 import android.widget.Button;
 
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.infomatch.data.GameResult;
 import com.example.infomatch.gamePlay.Cards;
+import com.example.infomatch.repository.GameDataRepository;
 
 import java.util.Arrays;
 import java.util.Collections;
 
 
-public class GameViewModel extends ViewModel {
+public class GameViewModel extends AndroidViewModel {
 
-
+    public GameDataRepository repository;
     public Boolean timer;
     public MutableLiveData<Boolean> gameEndLiveData;
     public int cardsAmount = 10;
@@ -25,14 +28,19 @@ public class GameViewModel extends ViewModel {
     public int pairsFound = 0;
     private MutableLiveData<Long> timerLiveData;
 
-    public GameViewModel() {
+    public GameViewModel(Application application) {
+        super(application);
         this.timerLiveData = new MutableLiveData<>();
         this.gameEndLiveData = new MutableLiveData<>();
         //this.gameEndLiveData.setValue(false);
         //this.pairsFound = 0;
         //this.timer = null;
+        repository = new GameDataRepository(application.getApplicationContext());
     }
 
+    public void addItem(GameResult gameResult) {
+        repository.insert(gameResult);
+    }
     private long milliLeft;
     public String qArray[] = new String[] {
             "q0", "q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9", "q10", "q11", "q12", "q13", "q14", "q15", "q16","q17" };
