@@ -5,9 +5,13 @@ import androidx.room.Entity;
 
 @Entity(tableName = "gameresult")
 public class GameResult {
+
+    @PrimaryKey
+    private int uid;
+    @ColumnInfo(name = "username")
     private String name;
     private int score;
-
+    @ColumnInfo(name = "pairs")
     private int numOfPairs;
     private double time;
 
