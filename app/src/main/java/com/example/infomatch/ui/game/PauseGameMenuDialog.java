@@ -3,6 +3,7 @@ package com.example.infomatch.ui.game;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.navigation.Navigation;
 
 import com.example.infomatch.R;
@@ -42,7 +44,8 @@ public class PauseGameMenuDialog extends DialogFragment {
             @Override
             public void onClick(View v) {
                 gameViewModel.timerResume();
-                Navigation.findNavController(getParentFragment().getView()).popBackStack();
+                //Navigation.findNavController(getParentFragment().getView()).popBackStack();
+                dismiss();
             }
         });
 
@@ -62,9 +65,9 @@ public class PauseGameMenuDialog extends DialogFragment {
 //                Fragment currentFragment = requireActivity().getSupportFragmentManager().findFragmentById(R.id.gameFragment);
 //                Log.d("currentFragment", currentFragment.toString());
 //                Navigation.findNavController(getParentFragment().getView()).popBackStack();
-                getParentFragment().getView().postInvalidate();
-
-
+                //getParentFragment().getView().postInvalidate()
+                gameViewModel.setUpGame();
+                dismiss();
 
             }
         });

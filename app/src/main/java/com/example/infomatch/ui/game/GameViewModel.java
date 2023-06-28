@@ -112,7 +112,6 @@ public class GameViewModel extends ViewModel {
 
     public void timerStop() {
         countDownTimer.cancel();
-        milliLeft = 0L;
     }
 
     public void setUpGame(){
@@ -140,6 +139,10 @@ public class GameViewModel extends ViewModel {
 
     public LiveData<Long> getTimerLiveData() {
         return timerLiveData;
+    }
+
+    public MutableLiveData<Boolean> getGameEndLiveData() {
+        return gameEndLiveData;
     }
 }
 

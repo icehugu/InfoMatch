@@ -1,9 +1,28 @@
-//package com.example.infomatch.data;
+package com.example.infomatch.data;
 
-//import androidx.room.Database;
-//import androidx.room.RoomDatabase;
+import android.content.Context;
 
-//@Database(entities = {GameResult.class}, version = 1)
-//public abstract class AppDataBase extends RoomDatabase {
-//    public abstract GameDataDao userDao();
-//}
+import androidx.room.Database;
+import androidx.room.Room;
+import androidx.room.RoomDatabase;
+
+
+
+
+@Database(entities = {GameResult.class}, version = 1)
+public abstract class AppDataBase extends RoomDatabase {
+    public abstract GameDataDao userDao();
+
+
+    private AppDataBase instance = null;
+
+//    fun getDatabase(context: Context) = instance ?: synchronized(this) {
+//        Room.databaseBuilder(context.applicationContext, WorkoutItemDatabase::class.java, "db")
+//                    .build()
+//    }
+
+    public AppDataBase getDatabase(Context context) {
+        instance = Room.databaseBuilder(context.getApplicationContext(), AppDataBase::class.java, "db").build();
+        return instance;
+    }
+}

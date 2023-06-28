@@ -1,8 +1,11 @@
 package com.example.infomatch.ui.game;
 
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.renderscript.ScriptGroup;
+
 import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -110,18 +113,86 @@ public class GameFragment extends Fragment {
         gameViewModel.gridButtons = gridButtons;
         gameViewModel.setUpGame();
         return view;
+
+
+
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         gameViewModel.getTimerLiveData().observe(getViewLifecycleOwner(), timeLeft -> binding.timer.setText(timeLeft.toString()));
+        gameViewModel.getGameEndLiveData().observe(getViewLifecycleOwner(), endGame -> {
+            if (endGame){
+                Toast.makeText(requireContext(), "pairs is: " + gameViewModel.pairsFound, Toast.LENGTH_SHORT);
+                Log.d("toast", "toast");
+                //gameViewModel.setGameEnd();
+                if(gameViewModel.pairsFound==6) {
+
+                    //Navigation.findNavController(view).popBackStack(R.id.mainManuFragment, false);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setMessage(gameViewModel.userName + " you have won! \n" +
+                                    "Your score is " + binding.score.getText().toString() + "\n" +
+                                    "Your time left is " + binding.timer.getText().toString() + "seconds \n" +
+                                    "You have found " + gameViewModel.pairsFound + " pairs")
+                            .setTitle("YOU WON!");
+
+                    builder.setPositiveButton("Replay", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            gameViewModel.setUpGame();
+                        }
+                    });
+
+                    builder.setNegativeButton("Main Menu", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Navigation.findNavController(getView()).popBackStack(R.id.mainManuFragment, false);
+                        }
+                    });
+                    builder.setCancelable(false);
+                    AlertDialog dialog = builder.create();
+
+                    dialog.show();
+
+                }
+                else{
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setMessage(gameViewModel.userName +" you have lost! \n" +
+                                    "Your score is " + binding.score.getText().toString() + "\n" +
+                                    "You have found " + gameViewModel.pairsFound + " pairs")
+                            .setTitle("YOU LOST!");
+
+                    builder.setPositiveButton("Replay", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            gameViewModel.setUpGame();
+                        }
+                    });
+
+                    builder.setNegativeButton("Main Menu", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Navigation.findNavController(getView()).popBackStack(R.id.mainManuFragment, false);
+                        }
+                    });
+                    builder.setCancelable(false);
+                    AlertDialog dialog = builder.create();
+
+                    dialog.show();
+                }
+            }
+        });
     }
+
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
     }
+
+
+
+
 }

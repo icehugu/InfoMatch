@@ -1,5 +1,9 @@
 package com.example.infomatch.data;
 
+
+import androidx.room.Entity;
+
+@Entity(tableName = "gameresult")
 public class GameResult {
     private String name;
     private int score;
