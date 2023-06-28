@@ -26,6 +26,21 @@ public class GameResult {
         setNumOfPairs(numOfPairs);
     }
 
+    public void setUid(int uid) {
+        this.uid = uid;
+    }
+
+    public void setDateAndTime(String dateAndTime) {
+        this.dateAndTime = dateAndTime;
+    }
+
+    public int getUid() {
+        return uid;
+    }
+
+    public String getDateAndTime() {
+        return dateAndTime;
+    }
 
     public String getName() {
         return name;
