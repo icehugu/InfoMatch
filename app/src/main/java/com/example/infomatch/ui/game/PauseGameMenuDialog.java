@@ -49,7 +49,7 @@ public class PauseGameMenuDialog extends DialogFragment {
         buttonMainMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gameViewModel.timerCancel();
+                gameViewModel.timerStop();
                 Navigation.findNavController(getParentFragment().getView()).popBackStack(R.id.mainManuFragment, false);
             }
         });

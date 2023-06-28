@@ -12,7 +12,6 @@ public interface GameDataDao {
     @Query("SELECT * FROM gameresult")
     List<GameResult> getAll();
 
-
     @Insert
     void insert(GameResult gameresult);
 

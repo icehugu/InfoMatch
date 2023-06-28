@@ -3,12 +3,15 @@ package com.example.infomatch.data;
 public class GameResult {
     private String name;
     private int score;
+
+    private int numOfPairs;
     private double time;
 
-    public GameResult(String name, int score, double time) {
+    public GameResult(String name, int score, double time,int numOfPairs) {
         setName(name);
         setScore(score);
         setTime(time);
+        setNumOfPairs(numOfPairs);
     }
 
 
@@ -34,5 +37,13 @@ public class GameResult {
 
     public void setTime(double time) {
         this.time = time;
+    }
+
+    public void setNumOfPairs(int numOfPairs) {
+        this.numOfPairs = numOfPairs;
+    }
+
+    public int getNumOfPairs() {
+        return numOfPairs;
     }
 }

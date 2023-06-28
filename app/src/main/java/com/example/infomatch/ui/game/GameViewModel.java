@@ -18,7 +18,8 @@ import java.util.Collections;
 public class GameViewModel extends ViewModel {
 
 
-    public Boolean timer = null;
+    public Boolean timer;
+    public MutableLiveData<Boolean> gameEndLiveData;
     public int cardsAmount = 10;
     public String userName;
     public int pairsFound = 0;
@@ -26,6 +27,10 @@ public class GameViewModel extends ViewModel {
 
     public GameViewModel() {
         this.timerLiveData = new MutableLiveData<>();
+        this.gameEndLiveData = new MutableLiveData<>();
+        //this.gameEndLiveData.setValue(false);
+        //this.pairsFound = 0;
+        //this.timer = null;
     }
 
     private long milliLeft;
@@ -45,7 +50,7 @@ public class GameViewModel extends ViewModel {
 
     public CountDownTimer countDownTimer;
 
-    Button[] gridButtons = new Button[12];
+    public Button[] gridButtons;
 
     public void setCardGame() {
         this.cardGame = new Cards(cardsAmount,qArray,aArray);
@@ -88,7 +93,7 @@ public class GameViewModel extends ViewModel {
             }
 
             public void onFinish() {
-                //mTextField.setText("done!");
+                timerEnd();
             }
         };
 
@@ -96,19 +101,41 @@ public class GameViewModel extends ViewModel {
 
     }
 
-    public void timerPause() {
+    public void timerEnd() {
         countDownTimer.cancel();
+        gameEndLiveData.setValue(true);
     }
 
     public void timerResume() {
         startTimer(milliLeft);
     }
 
-    public void timerCancel() {
+    public void timerStop() {
         countDownTimer.cancel();
         milliLeft = 0L;
     }
 
+    public void setUpGame(){
+        this.gameEndLiveData.setValue(false);
+        Collections.shuffle(Arrays.asList(this.cardsPositionsArray));
+        this.button1 = null;
+        this.button2 = null;
+        this.pairsFound = 0;
+        for (int i = 0; i < 6; i++) {
+            this.gridButtons[this.cardsPositionsArray[i*2]].setText(this.cardGame.getQaPair().keySet().toArray()[i].toString());
+            this.gridButtons[this.cardsPositionsArray[i*2]].setTextScaleX(0);
+            this.gridButtons[this.cardsPositionsArray[i*2]].setClickable(true);
+            this.gridButtons[this.cardsPositionsArray[(i*2)+1]].setText(this.cardGame.getQaPair().get(this.cardGame.getQaPair().keySet().toArray()[i].toString()));
+            this.gridButtons[this.cardsPositionsArray[(i*2)+1]].setTextScaleX(0);
+            this.gridButtons[this.cardsPositionsArray[(i*2)+1]].setClickable(true);
+        }
+        //this.timerStop();
+        this.startTimer(this.cardsAmount*2500);
+    }
+
+    public void setGameEnd(){
+        this.gameEndLiveData.setValue(false);
+    }
 
 
     public LiveData<Long> getTimerLiveData() {

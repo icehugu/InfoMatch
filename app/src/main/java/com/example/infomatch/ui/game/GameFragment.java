@@ -48,11 +48,10 @@ public class GameFragment extends Fragment {
         if (gameViewModel.timer == true) binding.timer.setText("100");
         binding.score.setText(String.valueOf(gameViewModel.cardsAmount));
         gameViewModel.setCardGame();
-        gameViewModel.startTimer(gameViewModel.cardsAmount*5000);
         binding.pauseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gameViewModel.timerPause();
+                gameViewModel.timerStop();
                 Navigation.findNavController(v).navigate(R.id.action_gameFragment_to_pauseGameMenuDialog);
             }
         });
@@ -95,7 +94,7 @@ public class GameFragment extends Fragment {
                                     gameViewModel.button2 = null;
                                     gameViewModel.pairsFound++;
                                     if(gameViewModel.pairsFound==6) {
-                                        gameViewModel.timerCancel();
+                                        gameViewModel.timerEnd();
                                     }
 
                                 }
@@ -108,13 +107,8 @@ public class GameFragment extends Fragment {
             gridButtons[i] = button;
             gridLayout.addView(button);
         }
-        Integer[] cardsPositionsArray = gameViewModel.cardsPositionsArray;
-        Collections.shuffle(Arrays.asList(cardsPositionsArray));
-        for (int i = 0; i < 6; i++) {
-            gridButtons[cardsPositionsArray[i*2]].setText(gameViewModel.cardGame.getQaPair().keySet().toArray()[i].toString());
-            gridButtons[cardsPositionsArray[(i*2)+1]].setText(gameViewModel.cardGame.getQaPair().get(gameViewModel.cardGame.getQaPair().keySet().toArray()[i].toString()));
-        }
-
+        gameViewModel.gridButtons = gridButtons;
+        gameViewModel.setUpGame();
         return view;
     }
 
@@ -124,28 +118,6 @@ public class GameFragment extends Fragment {
 
         gameViewModel.getTimerLiveData().observe(getViewLifecycleOwner(), timeLeft -> binding.timer.setText(timeLeft.toString()));
     }
-//    public void startTimer(long timeLengthMilli) {
-//        timer = new CountDownTimer(timeLengthMilli, 1000) {
-//
-//            public void onTick(long millisUntilFinished) {
-//                binding.timer.setText("" + millisUntilFinished / 1000);
-//                milliLeft = millisUntilFinished;
-//            }
-//
-//            public void onFinish() {
-//                //mTextField.setText("done!");
-//            }
-//        }.start();
-//
-//    }
-
-//    public void timerPause() {
-//        timer.cancel();
-//    }
-
-//    private void timerResume() {
-//        startTimer(milliLeft);
-//    }
 
     @Override
     public void onDestroyView() {

@@ -50,6 +50,10 @@
         <action
             android:id="@+id/action_gameFragment_to_pauseGameMenuDialog"
             app:destination="@id/pauseGameMenuDialog" />
+        <action
+            android:id="@+id/action_gameFragment_self"
+            app:destination="@id/gameFragment"
+            app:launchSingleTop="true"/>
     </fragment>
     <dialog
         android:id="@+id/gameSettingsDialog"
