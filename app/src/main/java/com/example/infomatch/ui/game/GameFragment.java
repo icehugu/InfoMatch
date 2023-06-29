@@ -39,8 +39,6 @@ public class GameFragment extends Fragment {
     private FragmentGameBinding binding;
     private GameViewModel gameViewModel;
 
-    CountDownTimer timer;
-    long milliLeft;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -52,13 +50,14 @@ public class GameFragment extends Fragment {
         gameViewModel = new ViewModelProvider(requireActivity()).get(GameViewModel.class);
         binding.userName.setText(getArguments().getString("userName"));
         gameViewModel.userName = getArguments().getString("userName");
-        if (gameViewModel.timer == true) binding.timer.setText("100");
-        binding.score.setText(String.valueOf(gameViewModel.cardsAmount));
+        if (!gameViewModel.timer) binding.timer.setVisibility(View.INVISIBLE);
         gameViewModel.setCardGame();
         binding.pauseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gameViewModel.timerStop();
+                if(gameViewModel.timer) {
+                    gameViewModel.timerStop();
+                }
                 Navigation.findNavController(v).navigate(R.id.action_gameFragment_to_pauseGameMenuDialog);
             }
         });
@@ -84,6 +83,7 @@ public class GameFragment extends Fragment {
                         gameViewModel.button2.setTextScaleX(0);
                         gameViewModel.button1 = null;
                         gameViewModel.button2 = null;
+                        gameViewModel.curCombo = 0;
                     }
                     if(gameViewModel.button1 == null){
                         button.setTextScaleX(1);
@@ -100,10 +100,16 @@ public class GameFragment extends Fragment {
                                     gameViewModel.button1 = null;
                                     gameViewModel.button2 = null;
                                     gameViewModel.pairsFound++;
-                                    if(gameViewModel.pairsFound==6) {
-                                        gameViewModel.timerEnd();
+                                    gameViewModel.curCombo++;
+                                    gameViewModel.curScore += gameViewModel.curCombo;
+                                    gameViewModel.updateCurScore();
+                                    binding.score.setText(String.valueOf(gameViewModel.curScore));
+                                    if(gameViewModel.pairsFound==gameViewModel.cardsAmount/2) {
+                                        gameViewModel.endGame();
                                     }
-
+                                    if(gameViewModel.pairsFound % 6 == 0){
+                                        gameViewModel.nextCards();
+                                    }
                                 }
                             }
                         }
@@ -129,14 +135,14 @@ public class GameFragment extends Fragment {
         gameViewModel.getGameEndLiveData().observe(getViewLifecycleOwner(), endGame -> {
             if (endGame){
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                if(gameViewModel.pairsFound==6) {
+                if(gameViewModel.pairsFound==gameViewModel.cardsAmount/2) {
                     Calendar calendarInstance = Calendar.getInstance();
                     String currentDateAndTime = calendarInstance.get(Calendar.DAY_OF_MONTH) + "." +
-                           "." + (calendarInstance.get(Calendar.MONTH) + 1) +  "." + calendarInstance.get(Calendar.YEAR) +
+                            (calendarInstance.get(Calendar.MONTH) + 1) +  "." + calendarInstance.get(Calendar.YEAR) +
                              "   "  + calendarInstance.get(Calendar.HOUR_OF_DAY) + ":" + calendarInstance.get(Calendar.MINUTE);
                     GameResult gr = new GameResult(binding.userName.getText().toString(),
-                            Integer.parseInt(binding.score.getText().toString()),
-                            Double.parseDouble(binding.timer.getText().toString()),
+                            gameViewModel.curScore,
+                            gameViewModel.cardsAmount * 2.5 - Double.parseDouble(binding.timer.getText().toString()),
                             gameViewModel.pairsFound,
                             currentDateAndTime);
                     
@@ -152,6 +158,7 @@ public class GameFragment extends Fragment {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             gameViewModel.setUpGame();
+                            binding.score.setText("0");
                         }
                     });
 

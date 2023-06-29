@@ -43,8 +43,9 @@ public class PauseGameMenuDialog extends DialogFragment {
         buttonReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gameViewModel.timerResume();
-                //Navigation.findNavController(getParentFragment().getView()).popBackStack();
+                if(gameViewModel.timer) {
+                    gameViewModel.timerResume();
+                }
                 dismiss();
             }
         });
@@ -52,7 +53,9 @@ public class PauseGameMenuDialog extends DialogFragment {
         buttonMainMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gameViewModel.timerStop();
+                if(gameViewModel.timer) {
+                    gameViewModel.timerStop();
+                }
                 Navigation.findNavController(getParentFragment().getView()).popBackStack(R.id.mainManuFragment, false);
             }
         });
@@ -60,22 +63,12 @@ public class PauseGameMenuDialog extends DialogFragment {
         buttonRestart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //gameViewModel.timerCancel();
-                //gameViewModel.score = 0;
-//                Fragment currentFragment = requireActivity().getSupportFragmentManager().findFragmentById(R.id.gameFragment);
-//                Log.d("currentFragment", currentFragment.toString());
-//                Navigation.findNavController(getParentFragment().getView()).popBackStack();
-                //getParentFragment().getView().postInvalidate()
                 gameViewModel.setUpGame();
                 dismiss();
 
             }
         });
-
-
         builder.setView(view);
-
-
         return builder.create();
     }
 }

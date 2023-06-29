@@ -26,6 +26,9 @@ public class GameViewModel extends AndroidViewModel {
     public int cardsAmount = 10;
     public String userName;
     public int pairsFound = 0;
+
+    public int curCombo = 0;
+    public int curScore = 0;
     private MutableLiveData<Long> timerLiveData;
 
     public GameViewModel(Application application) {
@@ -109,8 +112,10 @@ public class GameViewModel extends AndroidViewModel {
 
     }
 
-    public void timerEnd() {
-        countDownTimer.cancel();
+    public void endGame() {
+        if(this.timer) {
+            countDownTimer.cancel();
+        }
         gameEndLiveData.setValue(true);
     }
 
@@ -136,14 +141,32 @@ public class GameViewModel extends AndroidViewModel {
             this.gridButtons[this.cardsPositionsArray[(i*2)+1]].setTextScaleX(0);
             this.gridButtons[this.cardsPositionsArray[(i*2)+1]].setClickable(true);
         }
-        //this.timerStop();
-        this.startTimer(this.cardsAmount*2500);
+        if(this.timer) {
+            this.startTimer(this.cardsAmount * 2500);
+        }
+        this.curScore = 0;
+        this.scoreLiveData.setValue(this.curScore);
+        this.curCombo=0;
     }
 
-    public void setGameEnd(){
-        this.gameEndLiveData.setValue(false);
+    public void nextCards(){
+        Collections.shuffle(Arrays.asList(this.cardsPositionsArray));
+        this.button1 = null;
+        this.button2 = null;
+        for (int i = 0; i < 6; i++) {
+            this.gridButtons[this.cardsPositionsArray[i*2]].setText(this.cardGame.getQaPair().keySet().toArray()[i].toString());
+            this.gridButtons[this.cardsPositionsArray[i*2]].setTextScaleX(0);
+            this.gridButtons[this.cardsPositionsArray[i*2]].setClickable(true);
+            this.gridButtons[this.cardsPositionsArray[(i*2)+1]].setText(this.cardGame.getQaPair().get(this.cardGame.getQaPair().keySet().toArray()[i].toString()));
+            this.gridButtons[this.cardsPositionsArray[(i*2)+1]].setTextScaleX(0);
+            this.gridButtons[this.cardsPositionsArray[(i*2)+1]].setClickable(true);
+        }
     }
 
+
+    public MutableLiveData<Integer> getScoreLiveData() {
+        return scoreLiveData;
+    }
 
     public LiveData<Long> getTimerLiveData() {
         return timerLiveData;

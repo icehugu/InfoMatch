@@ -1,6 +1,7 @@
 package com.example.infomatch.data;
 
 
+import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -75,5 +76,10 @@ public class GameResult {
 
     public int getNumOfPairs() {
         return numOfPairs;
+    }
+
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        return super.equals(obj);
     }
 }

@@ -36,6 +36,30 @@ public class HighScoreFragment extends Fragment {
     }
 
     @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        highScoreViewModel.getAll().observe(getViewLifecycleOwner(), item -> {
+            binding.gameResultRecyclerView.setAdapter(new HighScoreListAdapter(item, new HighScoreListAdapter.ItemListener() {
+                @Override
+                public void onItemClicked(int index) {
+
+                }
+
+                @Override
+                public void onItemLongClicked(int index) {
+                    GameResult item =  ((HighScoreListAdapter) binding.gameResultRecyclerView.getAdapter()).itemAt(index);
+                    highScoreViewModel.deleteItem(item);
+
+                }
+            }));
+        });
+
+        binding.gameResultRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+
+
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
