@@ -68,9 +68,12 @@ public class GameFragment extends Fragment {
         for (int i = 0; i < 12; i++) {
             Button button = new Button(requireActivity());
             button.setLayoutParams(new ViewGroup.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT
+                    0,
+                    0
             ));
+
+            GridLayout.LayoutParams params = new GridLayout.LayoutParams(GridLayout.spec(GridLayout.UNDEFINED, 1f),      GridLayout.spec(GridLayout.UNDEFINED, 1f));
+            button.setLayoutParams(params);
             button.setTag("button"+ i);
 
 
@@ -199,6 +202,11 @@ public class GameFragment extends Fragment {
                     dialog.show();
                 }
             }
+        });
+
+
+        gameViewModel.getScoreLiveData().observe(getViewLifecycleOwner(), score -> {
+            binding.score.setText(String.valueOf(score));
         });
     }
 

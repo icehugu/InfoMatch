@@ -30,14 +30,13 @@ public class GameViewModel extends AndroidViewModel {
     public int curCombo = 0;
     public int curScore = 0;
     private MutableLiveData<Long> timerLiveData;
+    private MutableLiveData<Integer> scoreLiveData;
 
     public GameViewModel(Application application) {
         super(application);
         this.timerLiveData = new MutableLiveData<>();
         this.gameEndLiveData = new MutableLiveData<>();
-        //this.gameEndLiveData.setValue(false);
-        //this.pairsFound = 0;
-        //this.timer = null;
+        this.scoreLiveData = new MutableLiveData<>();
         repository = new GameDataRepository(application.getApplicationContext());
     }
 
@@ -104,7 +103,7 @@ public class GameViewModel extends AndroidViewModel {
             }
 
             public void onFinish() {
-                timerEnd();
+                endGame();
             }
         };
 
@@ -174,6 +173,10 @@ public class GameViewModel extends AndroidViewModel {
 
     public MutableLiveData<Boolean> getGameEndLiveData() {
         return gameEndLiveData;
+    }
+
+    public void updateCurScore() {
+        this.scoreLiveData.setValue(this.curScore);
     }
 }
 
