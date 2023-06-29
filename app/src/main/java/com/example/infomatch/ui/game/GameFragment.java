@@ -62,19 +62,21 @@ public class GameFragment extends Fragment {
             }
         });
 
-        GridLayout gridLayout = binding.cardsGrid;
-        gridLayout.setColumnCount(3);
-        gridLayout.setRowCount(4);
+        //GridLayout gridLayout = binding.cardsGrid;
+        //gridLayout.setColumnCount(3);
+        //gridLayout.setRowCount(4);
         for (int i = 0; i < 12; i++) {
-            Button button = new Button(requireActivity());
-            button.setLayoutParams(new ViewGroup.LayoutParams(
-                    0,
-                    0
-            ));
+            int id = getResources().getIdentifier("button_"+i, "id", requireActivity().getPackageName());
+            gridButtons[i] = (Button) view.findViewById(id);
 
-            GridLayout.LayoutParams params = new GridLayout.LayoutParams(GridLayout.spec(GridLayout.UNDEFINED, 1f),      GridLayout.spec(GridLayout.UNDEFINED, 1f));
-            button.setLayoutParams(params);
-            button.setTag("button"+ i);
+//            button.setLayoutParams(new ViewGroup.LayoutParams(
+//                    ViewGroup.LayoutParams.MATCH_PARENT,
+//                    ViewGroup.LayoutParams.MATCH_PARENT
+//            ));
+//
+//            GridLayout.LayoutParams params = new GridLayout.LayoutParams(GridLayout.spec(GridLayout.UNDEFINED, 1f),      GridLayout.spec(GridLayout.UNDEFINED, 1f));
+//            button.setLayoutParams(params);
+//            button.setTag("button"+ i);
 
 
             button.setOnClickListener(new View.OnClickListener() {
