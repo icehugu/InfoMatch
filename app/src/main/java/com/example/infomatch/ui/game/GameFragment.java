@@ -18,7 +18,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.gridlayout.widget.GridLayout;
+import android.widget.GridLayout;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
@@ -78,7 +78,7 @@ public class GameFragment extends Fragment {
 //            button.setLayoutParams(params);
 //            button.setTag("button"+ i);
 
-
+            Button button = gridButtons[i];
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -121,9 +121,8 @@ public class GameFragment extends Fragment {
                     }
                 }
             );
-            button.setTextScaleX(0);
-            gridButtons[i] = button;
-            gridLayout.addView(button);
+            gridButtons[i].setTextScaleX(0);
+            //gridLayout.addView(button);
         }
         gameViewModel.gridButtons = gridButtons;
         gameViewModel.setUpGame();
