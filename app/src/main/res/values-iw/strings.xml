@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">InfoMatch</string>
+    <string name="high_score">טבלת שיאים</string>
+    <string name="exit">יציאה</string>
+    <string name="start_game">התחל משחק</string>
+    <string name="back">חזרה</string>
+    <string name="manu">תפריט</string>
+    <string name="choose_number_of_cards">תבחר מספר קלפים</string>
+    <string name="set_timer">סדר טיימר</string>
+    <string name="no_timer">בלי טיימר</string>
+    <string name="yes_timer">עם טיימר</string>
+    <string name="score">ניקוד</string>
+    <string name="elapsed_time">זמן שנלקח</string>
+    <string name="pairs_found">זוגות שנמצאו</string>
+    <string name="enter_user_name">הכנס שם משתמש</string>
+    <string name="enter">כניסה</string>
+    <string name="pause_manu">תפריט עצירה</string>
+    <string name="restart">התחלה מחדש</string>
+    <string name="main_manu">תפריט ראשי</string>
+    <string name="you_have_won">ניצחת</string>
+    <string name="your_score_is">הניקוד שלך הוא</string>
+    <string name="your_time_left_is">הזמן שנשאר לך הוא</string>
+    <string name="seconds">שניות</string>
+    <string name="you_have_found">אתה מצאתה</string>
+    <string name="pairs">זוגות</string>
+    <string name="you_won">ניצחתה</string>
+    <string name="you_have_lost">הפסדתה</string>
+    <string name="you_lost">הפסדתה</string>
+    <string name="to_delete_a_score_do_a_long_press">למחיקת תוצאה יש לעשות לחיצה ארוכה</string>
+    <string name="please_enter_user_name">בבקשה הכנס שם משתמש</string>
+    <string name="start">התחל</string>
+    <string name="other_time">בזמן אחר</string>
+    <string name="hello">שלום</string>
+</resources>

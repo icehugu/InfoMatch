@@ -43,7 +43,8 @@ public class MainManuFragment extends Fragment {
         View view = binding.getRoot();
         mainMenuViewModel = new ViewModelProvider(this).get(MainManuViewModel.class);
         dialog = new GameSettingsDialog();
-        if (mainMenuViewModel.username != null) binding.userName.setText(mainMenuViewModel.username);
+        mainMenuViewModel.username = (getArguments().getString("userName"));
+        binding.userName.setText(getResources().getString(R.string.hello) + " " + mainMenuViewModel.username);
         binding.highScoreBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,6 +66,13 @@ public class MainManuFragment extends Fragment {
             }
         });
 
+        binding.exitBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+
+                Navigation.findNavController(v).popBackStack();
+            }
+        });
 
         return view;
     }

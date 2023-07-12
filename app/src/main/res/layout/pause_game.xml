@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Pause Manu"
+        android:text="@string/pause_manu"
         android:gravity="center"
         android:textSize="40dp"/>
 
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="return"
+        android:text="@string/back"
         android:textSize="30dp"/>
 
     <Button
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Restart"
+        android:text="@string/restart"
         android:textSize="30dp"/>
 
     <Button
@@ -35,6 +35,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Main Manu"
+        android:text="@string/main_manu"
         android:textSize="30dp"/>
 </LinearLayout>

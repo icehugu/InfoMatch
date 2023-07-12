@@ -28,7 +28,7 @@ public class HighScoreFragment extends Fragment {
         binding = FragmentHighscoreBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         highScoreViewModel = new ViewModelProvider(this).get(HighScoreViewModel.class);
-        binding.userName.setText(getArguments().getString("userName")+"\nto delete a score do a long press");
+        binding.userName.setText(getArguments().getString("userName")+"\n"+getResources().getString(R.string.to_delete_a_score_do_a_long_press));
         binding.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

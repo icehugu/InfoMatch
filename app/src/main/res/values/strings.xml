@@ -3,16 +3,38 @@
     <string name="high_score">high score</string>
     <string name="exit">exit</string>
     <string name="start_game">start game</string>
-    <string name="place_holder">Place Holder</string>
+    <string name="place_holder" translatable="false">Place Holder</string>
     <string name="back">back</string>
     <string name="manu">Manu</string>
-    <string name="choose_number_of_pairs">choose number of pairs</string>
+    <string name="choose_number_of_cards">choose number of cards</string>
     <string name="set_timer">set timer</string>
     <string name="no_timer">no timer</string>
     <string name="yes_timer">yes timer</string>
+    <string name="score">score</string>
+    <string name="elapsed_time">elapsed time</string>
+    <string name="pairs_found">pairs found</string>
+    <string name="enter_user_name">enter user name</string>
+    <string name="enter">enter</string>
+    <string name="pause_manu">Pause Manu</string>
+    <string name="restart">Restart</string>
+    <string name="main_manu">Main Manu</string>
+    <string name="you_have_won">you have won</string>
+    <string name="your_score_is">Your score is</string>
     <string-array name="cards_amount">
         <item>"12"</item>
         <item>"24"</item>
         <item>"36"</item>
     </string-array>
+    <string name="your_time_left_is">Your time left is</string>
+    <string name="seconds">seconds</string>
+    <string name="you_have_found">You have found</string>
+    <string name="pairs">pairs</string>
+    <string name="you_won">YOU WON</string>
+    <string name="you_have_lost">You have lost</string>
+    <string name="you_lost">YOU LOST</string>
+    <string name="to_delete_a_score_do_a_long_press">to delete a score do a long press</string>
+    <string name="please_enter_user_name">Please enter user name</string>
+    <string name="start">Start</string>
+    <string name="other_time">Other time</string>
+    <string name="hello">Hello</string>
 </resources>

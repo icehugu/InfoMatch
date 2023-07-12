@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mynav"
-    app:startDestination="@id/mainManuFragment">
+    app:startDestination="@id/mainActivityFragment">
 
     <fragment
         android:id="@+id/mainManuFragment"
@@ -18,6 +18,12 @@
         <action
             android:id="@+id/action_mainManuFragment_to_gameSettingsDialog"
             app:destination="@id/gameSettingsDialog" />
+        <action
+            android:id="@+id/action_mainManuFragment_to_mainActivityFragment"
+            app:destination="@id/mainActivityFragment" />
+        <argument
+            android:name="userName"
+            app:argType="string" />
     </fragment>
     <activity
         android:id="@+id/mainActivity"
@@ -74,4 +80,14 @@
             android:id="@+id/action_pauseGameMenuDialog_to_gameFragment"
             app:destination="@id/gameFragment" />
     </dialog>
+    <fragment
+        android:id="@+id/mainActivityFragment"
+        android:name="com.example.infomatch.ui.main.MainActivityFragment"
+        android:label="MainActivityFragment" >
+        <action
+            android:id="@+id/action_mainActivityFragment_to_mainManuFragment"
+            app:destination="@id/mainManuFragment"
+            app:popUpTo="@id/mainManuFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

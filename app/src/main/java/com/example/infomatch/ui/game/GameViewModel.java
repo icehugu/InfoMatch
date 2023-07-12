@@ -45,10 +45,10 @@ public class GameViewModel extends AndroidViewModel {
     }
     private long milliLeft;
     public String qArray[] = new String[] {
-            "q0", "q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9", "q10", "q11", "q12", "q13", "q14", "q15", "q16","q17" };
+            "how much\nis 1 mb\nin kb", "how much\nis 1 gb\nin mb", "how much\nis 1 tb\bin gb", "what is\n2^5", "when was\nmicrosoft\nfounded", "q5", "q6", "q7", "q8", "q9", "q10", "q11", "q12", "q13", "q14", "q15", "q16","q17" };
 
     public String aArray[] = new String[] {
-            "a0", "a1", "a2", "a3", "a4", "a5", "a6", "a7", "a8", "a9", "a10", "a11", "a12", "a13", "a14", "a15", "a16","a17" };
+            "1000 kb", "1000 mb", "1000 gb", "32", "1975,\nApril 4", "a5", "a6", "a7", "a8", "a9", "a10", "a11", "a12", "a13", "a14", "a15", "a16","a17" };
 
     public Cards cardGame;
 
@@ -129,6 +129,7 @@ public class GameViewModel extends AndroidViewModel {
     public void setUpGame(){
         this.gameEndLiveData.setValue(false);
         Collections.shuffle(Arrays.asList(this.cardsPositionsArray));
+        this.cardGame.reShuffle();
         this.button1 = null;
         this.button2 = null;
         this.pairsFound = 0;

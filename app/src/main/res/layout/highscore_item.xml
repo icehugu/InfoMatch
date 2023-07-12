@@ -59,7 +59,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_gravity="center"
-                    android:text="score"
+                    android:text="@string/score"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     />
@@ -84,7 +84,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_gravity="center"
-                    android:text="elapsed time"
+                    android:text="@string/elapsed_time"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -111,7 +111,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_gravity="center"
-                    android:text="pairs found"
+                    android:text="@string/pairs_found"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 

@@ -57,24 +57,24 @@ public  class GameSettingsDialog extends DialogFragment {
             }
         });
         builder.setView(view)
-                .setPositiveButton("Start", new DialogInterface.OnClickListener() {
+                .setPositiveButton(getResources().getString(R.string.start), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         Bundle bundle = new Bundle();
                         bundle.putString("userName", getArguments().getString("userName"));
                         int selectedId = radioGroup.getCheckedRadioButtonId();
                         RadioButton radioButton = (RadioButton) radioGroup.findViewById(selectedId);
-                        if (radioButton.getText().toString().equals("yes timer") ) {
+                        if (radioButton.getText().toString().equals(getResources().getString(R.string.yes_timer)) ) {
                             gameViewModel.timer = true;
                         }
-                        else if (radioButton.getText().toString().equals("no timer")) {
+                        else {
                             gameViewModel.timer = false;
                         }
                         gameViewModel.cardsAmount = cardsAmountChoice;
                         Navigation.findNavController(getParentFragment().getView()).navigate(R.id.action_gameSettingsDialog_to_gameFragment, bundle);
                     }
                 })
-                .setNegativeButton("Other time!", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getResources().getString(R.string.other_time), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                     }

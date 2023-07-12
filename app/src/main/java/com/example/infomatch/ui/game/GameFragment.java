@@ -152,13 +152,13 @@ public class GameFragment extends Fragment {
                     
                     gameViewModel.addItem(gr);
 
-                    builder.setMessage(gameViewModel.userName + " you have won! \n" +
-                                    "Your score is " + binding.score.getText().toString() + "\n" +
-                                    "Your time left is " + binding.timer.getText().toString() + "seconds \n" +
-                                    "You have found " + gameViewModel.pairsFound + " pairs")
-                            .setTitle("YOU WON!");
+                    builder.setMessage(gameViewModel.userName + " " + getResources().getString(R.string.you_have_won) + "\n" +
+                            getResources().getString(R.string.your_score_is) + " " + binding.score.getText().toString() + "\n" +
+                                    getResources().getString(R.string.your_time_left_is) + " " + binding.timer.getText().toString() + " " + getResources().getString(R.string.seconds) +"\n" +
+                                    getResources().getString(R.string.you_have_found) + " " + gameViewModel.pairsFound + " " + getResources().getString(R.string.pairs))
+                            .setTitle(getResources().getString(R.string.you_won));
 
-                    builder.setPositiveButton("Replay", new DialogInterface.OnClickListener() {
+                    builder.setPositiveButton(getResources().getString(R.string.restart), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             gameViewModel.setUpGame();
@@ -166,7 +166,7 @@ public class GameFragment extends Fragment {
                         }
                     });
 
-                    builder.setNegativeButton("Main Menu", new DialogInterface.OnClickListener() {
+                    builder.setNegativeButton(getResources().getString(R.string.main_manu), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             Navigation.findNavController(getView()).popBackStack(R.id.mainManuFragment, false);
@@ -179,19 +179,19 @@ public class GameFragment extends Fragment {
 
                 }
                 else{
-                    builder.setMessage(gameViewModel.userName +" you have lost! \n" +
-                                    "Your score is " + binding.score.getText().toString() + "\n" +
-                                    "You have found " + gameViewModel.pairsFound + " pairs")
-                            .setTitle("YOU LOST!");
+                    builder.setMessage(gameViewModel.userName +" " +getResources().getString(R.string.you_have_lost) +"\n" +
+                                    getResources().getString(R.string.your_score_is) + " " + binding.score.getText().toString() + "\n" +
+                                    getResources().getString(R.string.you_have_found) + " " + gameViewModel.pairsFound + " " + getResources().getString(R.string.pairs))
+                            .setTitle(getResources().getString(R.string.you_lost));
 
-                    builder.setPositiveButton("Replay", new DialogInterface.OnClickListener() {
+                    builder.setPositiveButton(getResources().getString(R.string.restart), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             gameViewModel.setUpGame();
                         }
                     });
 
-                    builder.setNegativeButton("Main Menu", new DialogInterface.OnClickListener() {
+                    builder.setNegativeButton(getResources().getString(R.string.main_manu), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             Navigation.findNavController(getView()).popBackStack(R.id.mainManuFragment, false);

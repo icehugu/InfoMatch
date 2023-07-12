@@ -63,20 +63,27 @@
             />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+    </LinearLayout>
 
     <GridLayout
         android:id="@+id/cards_grid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
         android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:layout_weight="1"
         android:columnCount="3"
-        android:rowCount="4"
-        android:layout_marginTop="100dp">
+        android:rowCount="4">
 
         <Button
             android:id="@+id/button_0"
-            android:layout_width="49dp"
-            android:layout_height="87dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_rowWeight="1"
             android:layout_column="0"
@@ -204,8 +211,6 @@
             android:layout_columnWeight="1"
             android:layout_margin="5dp"
             android:tag="button_11" />
-
-
     </GridLayout>
 
 
