@@ -34,7 +34,7 @@ public class HighScoreFragment extends Fragment {
             public void onClick(View v) {
                 Log.d("MainManuFragment", "click");
 
-                Navigation.findNavController(v).navigate(R.id.action_highScoreFragment_to_mainManuFragment);
+                Navigation.findNavController(v).popBackStack();
             }
         });
         return view;

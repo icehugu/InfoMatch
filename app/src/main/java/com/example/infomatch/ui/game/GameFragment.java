@@ -3,6 +3,7 @@ package com.example.infomatch.ui.game;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 
@@ -91,17 +92,19 @@ public class GameFragment extends Fragment {
                         gameViewModel.curCombo = 0;
                     }
                     if(gameViewModel.button1 == null){
-                        button.setTextScaleX(1);
+                        button.setTextScaleX(0.8f);
                         gameViewModel.button1 = button;
                     }
                     else {
 
                             if (gameViewModel.button1 != button) {
-                                button.setTextScaleX(1);
+                                button.setTextScaleX(0.8f);
                                 gameViewModel.button2 = button;
                                 if (gameViewModel.checkPairOfCards(gameViewModel.button1, gameViewModel.button2)) {
                                     gameViewModel.button1.setClickable(false);
                                     gameViewModel.button2.setClickable(false);
+                                    gameViewModel.button1.setBackgroundColor(Color.GREEN);
+                                    gameViewModel.button2.setBackgroundColor(Color.GREEN);
                                     gameViewModel.button1 = null;
                                     gameViewModel.button2 = null;
                                     gameViewModel.pairsFound++;
