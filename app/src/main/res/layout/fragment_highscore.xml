@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="screenshot" />
+        android:text="@string/screenshot" />
 
     <Button
         android:id="@+id/back_btn"

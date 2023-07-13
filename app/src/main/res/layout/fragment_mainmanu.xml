@@ -7,6 +7,18 @@
     tools:context="ui.mainManu.MainManuFragment">
 
     <Button
+        android:id="@+id/special_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/special"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.777"
+        app:layout_constraintStart_toEndOf="@+id/user_name"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.079" />
+
+    <Button
         android:id="@+id/start_game_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -53,6 +65,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/source_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:text="Click here to see the source code"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exit_btn" />
 
 
     <!--    הכפתור של משחק יקפיץ חלון פוף אף אשר ייתין לשחקן לשחקן לבחור כמה זוגות קלפים היה במשחק/תיימיר/ או משחק מיוחד ואחרי מילוי הפרטים יעביר אותו לפרגמנט של המשחק עצמו והכפתור השני שולח אותו לטבלה של הציונים הגבוהים של מי ששיחקו במשחק הזה במכשיר-->

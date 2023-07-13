@@ -32,6 +32,13 @@
         <argument
             android:name="userName"
             app:argType="string" />
+        <action
+            android:id="@+id/action_mainManuFragment_to_specialFragment"
+            app:destination="@id/specialFragment"
+            app:enterAnim="@anim/from_bottom"
+            app:exitAnim="@anim/to_top"
+            app:popEnterAnim="@anim/from_bottom"
+            app:popExitAnim="@anim/to_top" />
     </fragment>
     <activity
         android:id="@+id/mainActivity"
@@ -103,5 +110,13 @@
             app:exitAnim="@anim/to_left"
             app:popEnterAnim="@anim/from_left"
             app:popExitAnim="@anim/to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/specialFragment"
+        android:name="com.example.infomatch.ui.special.SpecialFragment"
+        android:label="SpecialFragment" >
+        <action
+            android:id="@+id/action_specialFragment_to_mainManuFragment"
+            app:destination="@id/mainManuFragment" />
     </fragment>
 </navigation>
