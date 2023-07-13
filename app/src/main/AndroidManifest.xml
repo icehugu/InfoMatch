@@ -6,6 +6,7 @@
 <!--    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>-->
 <!--    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>-->
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -19,6 +20,7 @@
             android:name=".ui.main.MainActivity"
             android:exported="true">
             <intent-filter>
+                <action android:name="android.intent.action.SET_ALARM" />
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW"/>
                 <data android:scheme="https"/>
@@ -47,5 +49,6 @@
         </intent>
         <package android:name="com.android.chrome" />
         <package android:name="com.google.android.calendar"/>
+        <package android:name="com.google.android.deskclock"/>
     </queries>
 </manifest>

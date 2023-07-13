@@ -4,12 +4,14 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.AlarmClock;
 import android.provider.CalendarContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
+import com.example.infomatch.R;
 import com.example.infomatch.databinding.FragmentMainmanuBinding;
 import com.example.infomatch.databinding.FragmentSpecialBinding;
 import com.example.infomatch.ui.mainManu.MainManuViewModel;
@@ -98,38 +101,40 @@ public class SpecialFragment extends Fragment {
                     beginTime.set(viewModel.getmYear(), viewModel.getmMonth(), viewModel.getmDay());
                     Intent intent = new Intent(Intent.ACTION_INSERT)
                             .setData(CalendarContract.Events.CONTENT_URI)
-                            .putExtra(CalendarContract.Events.TITLE, "play info match")
+                            .putExtra(CalendarContract.Events.TITLE, "play infomatch")
                             .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis())
                             .putExtra(CalendarContract.Events.ALL_DAY, true);
-
-
-
                     if (intent.resolveActivity(requireContext().getPackageManager()) != null) {
                         startActivity(intent);
                 }
-
             }
+                else{
+                    Toast.makeText(requireContext(), "please chose a date for the calendar", Toast.LENGTH_SHORT).show();
+                }
         }});
+
+
+        binding.setAlarmBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(viewModel.getmHour()!=-1) {
+                    Intent intent = new Intent(AlarmClock.ACTION_SET_ALARM)
+                            .putExtra(AlarmClock.EXTRA_MESSAGE, "play infomatch")
+                            .putExtra(AlarmClock.EXTRA_HOUR, viewModel.getmHour())
+                            .putExtra(AlarmClock.EXTRA_MINUTES, viewModel.getmMinute());
+                    if (intent.resolveActivity(requireContext().getPackageManager()) != null) {
+                        startActivity(intent);
+                    }
+                }
+                else{
+                    Toast.makeText(requireContext(), "please chose a time for the alarm", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
 
         return binding.getRoot();
     }
 
-    static long getMiliseconds(String date, String time){
-
-        try{
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy h:mm a");
-            Date date1 = sdf.parse(date+" "+time);
-            Calendar cal1 = Calendar.getInstance();
-            cal1.setTime(date1);
-            Calendar beginCal = Calendar.getInstance();
-
-            beginCal.set(cal1.get(Calendar.YEAR),cal1.get(Calendar.MONTH), cal1.get(Calendar.DAY_OF_MONTH), cal1.get(Calendar.HOUR_OF_DAY), cal1.get(Calendar.MINUTE));
-            return beginCal.getTimeInMillis();
-        }
-        catch (Exception e) {
-            return new Date().getTime();
-        }
-    }
 
 }
