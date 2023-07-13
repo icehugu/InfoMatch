@@ -48,6 +48,13 @@ public class MainActivityFragment extends Fragment {
             }
         });
 
+//        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//            @Override
+//            public void onCompletion(MediaPlayer mp) {
+//                mediaPlayer.release();
+//            }
+//        });
+
         return binding.getRoot();
     }
 }
