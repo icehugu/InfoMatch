@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        final File newFolder = new File(this.getFilesDir().toString() + "/InfoMatch-Screenshots");
-        Log.d("location", this.getFilesDir().toString());
+        final File newFolder = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/InfoMatch-Screenshots");
+        Log.d("location", Environment.getExternalStorageDirectory().toString());
         try {
             if (newFolder.mkdir()) {
                 Toast.makeText(this, "folder was created successfully", Toast.LENGTH_SHORT).show();

@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,7 @@ import com.example.infomatch.databinding.FragmentMainmanuBinding;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.text.DateFormat;
 import java.util.Date;
 
 public class HighScoreFragment extends Fragment {
@@ -89,11 +91,15 @@ public class HighScoreFragment extends Fragment {
 
     private void takeScreenshot() {
         Date now = new Date();
-        android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
-
+        android.text.format.DateFormat.format("yyyyMMddhhmmss", now);
+        DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(requireContext());
+        DateFormat timeFormat = android.text.format.DateFormat.getTimeFormat(requireContext());
+        Log.d("now", dateFormat.format(now));
+        Log.d("now", timeFormat.format(now));
         try {
             // image naming and path  to include sd card  appending name you choose for file
-            String mPath = requireContext().getFilesDir().toString() + "/InfoMatch-Screenshots" + "/" + now + ".jpg";
+            String mPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/InfoMatch-Screenshots"  + "/" + dateFormat.format(now) +
+                    timeFormat.format(now).replace(":", ".")+ ".jpg";
 
             // create bitmap screen capture
             View v1 = requireActivity().getWindow().getDecorView().getRootView();
