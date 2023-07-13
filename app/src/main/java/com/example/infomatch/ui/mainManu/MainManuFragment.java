@@ -7,7 +7,10 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Paint;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -48,7 +51,7 @@ public class MainManuFragment extends Fragment {
         dialog = new GameSettingsDialog();
         mainMenuViewModel.username = (getArguments().getString("userName"));
         binding.userName.setText(getResources().getString(R.string.hello) + " " + mainMenuViewModel.username);
-//        Environment.
+        binding.sourceCode.setPaintFlags(binding.sourceCode.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
         binding.highScoreBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +81,21 @@ public class MainManuFragment extends Fragment {
             }
         });
 
+        binding.specialBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+
+                Navigation.findNavController(v).navigate(R.id.action_mainManuFragment_to_specialFragment);
+            }
+        });
+
+        binding.sourceCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openWebPage("https://github.com/icehugu/InfoMatch");
+            }
+        });
+
         return view;
     }
 
@@ -86,6 +104,15 @@ public class MainManuFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+    private void openWebPage(String url) {
+        Uri webpage = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+        if (intent.resolveActivity(requireContext().getPackageManager()) != null) {
+            startActivity(intent);
+        }
+    }
+
 
 }
 
