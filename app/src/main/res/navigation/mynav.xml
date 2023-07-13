@@ -11,7 +11,11 @@
         android:label="MainManuFragment" >
         <action
             android:id="@+id/action_mainManuFragment_to_highScoreFragment"
-            app:destination="@id/highScoreFragment" />
+            app:destination="@id/highScoreFragment"
+            app:enterAnim="@anim/from_bottom"
+            app:exitAnim="@anim/to_top"
+            app:popEnterAnim="@anim/from_top"
+            app:popExitAnim="@anim/to_bottom" />
         <action
             android:id="@+id/action_mainManuFragment_to_gameFragment"
             app:destination="@id/gameFragment" />
@@ -20,7 +24,11 @@
             app:destination="@id/gameSettingsDialog" />
         <action
             android:id="@+id/action_mainManuFragment_to_mainActivityFragment"
-            app:destination="@id/mainActivityFragment" />
+            app:destination="@id/mainActivityFragment"
+            app:enterAnim="@anim/from_bottom"
+            app:exitAnim="@anim/to_bottom"
+            app:popEnterAnim="@anim/from_bottom"
+            app:popExitAnim="@anim/to_top" />
         <argument
             android:name="userName"
             app:argType="string" />
@@ -36,7 +44,11 @@
         android:label="HighScoreFragment" >
         <action
             android:id="@+id/action_highScoreFragment_to_mainManuFragment"
-            app:destination="@id/mainManuFragment" />
+            app:destination="@id/mainManuFragment"
+            app:enterAnim="@anim/from_top"
+            app:exitAnim="@anim/to_bottom"
+            app:popEnterAnim="@anim/from_top"
+            app:popExitAnim="@anim/to_bottom" />
         <argument
             android:name="userName"
             app:argType="string"
@@ -87,7 +99,9 @@
         <action
             android:id="@+id/action_mainActivityFragment_to_mainManuFragment"
             app:destination="@id/mainManuFragment"
-            app:popUpTo="@id/mainManuFragment"
-            app:popUpToInclusive="true" />
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
     </fragment>
 </navigation>

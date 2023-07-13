@@ -55,6 +55,7 @@ public class PauseGameMenuDialog extends DialogFragment {
             public void onClick(View v) {
                 if(gameViewModel.timer) {
                     gameViewModel.timerStop();
+                    gameViewModel.getMediaPlayer().release();
                 }
                 Navigation.findNavController(getParentFragment().getView()).popBackStack(R.id.mainManuFragment, false);
             }

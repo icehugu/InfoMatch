@@ -3,6 +3,7 @@ package com.example.infomatch.ui.game;
 
 import android.annotation.SuppressLint;
 import android.app.Application;
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.widget.Button;
 
@@ -33,6 +34,8 @@ public class GameViewModel extends AndroidViewModel {
     public int curScore = 0;
     private MutableLiveData<Long> timerLiveData;
     private MutableLiveData<Integer> scoreLiveData;
+
+    private MediaPlayer mediaPlayer;
 
     public GameViewModel(Application application) {
         super(application);
@@ -185,6 +188,14 @@ public class GameViewModel extends AndroidViewModel {
 
     public void updateCurScore() {
         this.scoreLiveData.setValue(this.curScore);
+    }
+
+    public void setMediaPlayer(MediaPlayer mediaPlayer) {
+        this.mediaPlayer = mediaPlayer;
+    }
+
+    public MediaPlayer getMediaPlayer() {
+        return mediaPlayer;
     }
 }
 

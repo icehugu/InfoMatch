@@ -7,7 +7,9 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +37,7 @@ public class MainManuFragment extends Fragment {
 
     private FragmentMainmanuBinding binding;
     private MainManuViewModel mainMenuViewModel ;
+
     private GameSettingsDialog dialog;
     @Nullable
     @Override
@@ -45,6 +48,7 @@ public class MainManuFragment extends Fragment {
         dialog = new GameSettingsDialog();
         mainMenuViewModel.username = (getArguments().getString("userName"));
         binding.userName.setText(getResources().getString(R.string.hello) + " " + mainMenuViewModel.username);
+//        Environment.
         binding.highScoreBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

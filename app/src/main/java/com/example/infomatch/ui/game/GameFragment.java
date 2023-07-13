@@ -4,6 +4,7 @@ package com.example.infomatch.ui.game;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 
@@ -40,17 +41,21 @@ public class GameFragment extends Fragment {
     private FragmentGameBinding binding;
     private GameViewModel gameViewModel;
 
+    private MediaPlayer mediaPlayer;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentGameBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
+        mediaPlayer = MediaPlayer.create(requireContext(), R.raw.card_flip);
         Button[] gridButtons = new Button[12];
         binding.timer.setInputType(InputType.TYPE_NULL);
         binding.score.setInputType(InputType.TYPE_NULL);
         gameViewModel = new ViewModelProvider(requireActivity()).get(GameViewModel.class);
         binding.userName.setText(getArguments().getString("userName"));
         gameViewModel.userName = getArguments().getString("userName");
+        gameViewModel.setMediaPlayer(mediaPlayer);
         if (!gameViewModel.timer) binding.timer.setVisibility(View.INVISIBLE);
         gameViewModel.setCardGame();
         binding.pauseBtn.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +89,7 @@ public class GameFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
 
+                    mediaPlayer.start();
                     if (gameViewModel.button1 != null && gameViewModel.button2 != null) {
                         gameViewModel.button1.setTextScaleX(0);
                         gameViewModel.button2.setTextScaleX(0);
@@ -172,6 +178,7 @@ public class GameFragment extends Fragment {
                     builder.setNegativeButton(getResources().getString(R.string.main_manu), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            mediaPlayer.release();
                             Navigation.findNavController(getView()).popBackStack(R.id.mainManuFragment, false);
                         }
                     });
@@ -197,6 +204,7 @@ public class GameFragment extends Fragment {
                     builder.setNegativeButton(getResources().getString(R.string.main_manu), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            mediaPlayer.release();
                             Navigation.findNavController(getView()).popBackStack(R.id.mainManuFragment, false);
                         }
                     });
