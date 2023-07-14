@@ -32,4 +32,11 @@
     <string name="start">התחל</string>
     <string name="other_time">בזמן אחר</string>
     <string name="hello">שלום</string>
+    <string name="special">מיוחד</string>
+    <string name="screenshot">תמונת מסך</string>
+    <string name="select_date">בחירת תאריך</string>
+    <string name="set_date">שמירת תאריך</string>
+    <string name="select_alarm">בחרית זמן התראה</string>
+    <string name="set_alarm">שמירת זמן התראה</string>
+    <string name="click_here_to_see_the_source_code">תלחץ כאן כדי לראות קוד מקור</string>
 </resources>

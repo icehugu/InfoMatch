@@ -1,12 +1,10 @@
 package com.example.infomatch.ui.game;
 
-
 import android.annotation.SuppressLint;
 import android.app.Application;
 import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.widget.Button;
-
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -16,7 +14,6 @@ import com.example.infomatch.R;
 import com.example.infomatch.data.GameResult;
 import com.example.infomatch.gamePlay.Cards;
 import com.example.infomatch.repository.GameDataRepository;
-
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -37,23 +34,46 @@ public class GameViewModel extends AndroidViewModel {
 
     private MediaPlayer mediaPlayer;
 
-    public GameViewModel(Application application) {
-        super(application);
-        this.timerLiveData = new MutableLiveData<>();
-        this.gameEndLiveData = new MutableLiveData<>();
-        this.scoreLiveData = new MutableLiveData<>();
-        repository = new GameDataRepository(application.getApplicationContext());
-    }
-
-    public void addItem(GameResult gameResult) {
-        repository.insert(gameResult);
-    }
     private long milliLeft;
     public String qArray[] = new String[] {
-            "how much\nis 1 mb\nin kb", "how much\nis 1 gb\nin mb", "how much\nis 1 tb\bin gb", "what is\n2^5", "when was\nmicrosoft\nfounded", "q5", "q6", "q7", "q8", "q9", "q10", "q11", "q12", "q13", "q14", "q15", "q16","q17" };
+            "how much\nis 1 mb\nin kb?", //q0
+            "how much\nis 1 gb\nin mb?", //q1
+            "how much\nis 1 tb\nin gb?", //q2
+            "what is\n2^5?",//q3
+            "when was\nmicrosoft\nfounded?", //q4
+            "min(1,5)\n=?", //q5
+            "who is\nthe\ninventor\nof the\ntelephone?", //q6
+            "who is\nthe\ninventor\nof the\nelectricity", //q7
+            "who is\nthe\nfounded\nApple?", //q8
+            "when was\nthe turing\nmachine first\ndescribed?", //q9
+            "when was\nthe iphone\nfirst launch\ndate?", //q10
+            "what are\nthe values\nin binary?", //q11
+            "what are\nthe values\nof a\nboolean\nvariable?", //q12
+            "what can\na int\nvariable\nnot hold?", //q13
+            "x = 3\ny = 2\n(x*y)-y=?", //q14
+            "what is\nHIT?", //q15
+            "what are\nthe 3 main\ncolors?",//q16
+            "what time\n it is?" };//q17
 
     public String aArray[] = new String[] {
-            "1000 kb", "1000 mb", "1000 gb", "32", "1975,\nApril 4", "a5", "a6", "a7", "a8", "a9", "a10", "a11", "a12", "a13", "a14", "a15", "a16","a17" };
+            "1000\nkb", //a0
+            "1000\nmb", //a1
+            "1000\ngb", //a2
+            "32", //a3
+            "1975,\nApril 4", //a4
+            "1", //a5
+            "alexander\nbell", //a6
+            "thomas\nedison", //a7
+            "steve\njobs", //a8
+            "1936", //a9
+            "2007", //a10
+            "0/1", //a11
+            "true\nor\nfalse", //a12
+            "1.5", //a13
+            "4", //a14
+            "Holon\nInstitute\nof\nTechnology", //a15
+            "red\nYellow\nblue", //a16
+            "hammer\ntime" }; //a17
 
     public Cards cardGame;
 
@@ -66,6 +86,18 @@ public class GameViewModel extends AndroidViewModel {
     public CountDownTimer countDownTimer;
 
     public Button[] gridButtons;
+
+    public GameViewModel(Application application) {
+        super(application);
+        this.timerLiveData = new MutableLiveData<>();
+        this.gameEndLiveData = new MutableLiveData<>();
+        this.scoreLiveData = new MutableLiveData<>();
+        repository = new GameDataRepository(application.getApplicationContext());
+    }
+
+    public void addItem(GameResult gameResult) {
+        repository.insert(gameResult);
+    }
 
     public void setCardGame() {
         this.cardGame = new Cards(cardsAmount,qArray,aArray);

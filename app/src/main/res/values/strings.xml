@@ -43,4 +43,5 @@
     <string name="set_date">set date</string>
     <string name="select_alarm">select alarm</string>
     <string name="set_alarm">set alarm</string>
+    <string name="click_here_to_see_the_source_code">Click here to see the source code</string>
 </resources>

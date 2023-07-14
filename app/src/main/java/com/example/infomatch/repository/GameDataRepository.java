@@ -1,13 +1,10 @@
 package com.example.infomatch.repository;
 
 import android.content.Context;
-
 import androidx.lifecycle.LiveData;
-
 import com.example.infomatch.data.AppDataBase;
 import com.example.infomatch.data.GameDataDao;
 import com.example.infomatch.data.GameResult;
-
 import java.util.List;
 
 public class GameDataRepository {

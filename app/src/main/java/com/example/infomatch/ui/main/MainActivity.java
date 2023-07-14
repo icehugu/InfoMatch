@@ -19,7 +19,6 @@ import com.example.infomatch.ui.mainManu.MainManuFragment;
 import com.example.infomatch.ui.mainManu.MainManuViewModel;
 
 import java.io.File;
-
 public class MainActivity extends AppCompatActivity {
 
 

@@ -1,6 +1,5 @@
 package com.example.infomatch.data;
 
-
 import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

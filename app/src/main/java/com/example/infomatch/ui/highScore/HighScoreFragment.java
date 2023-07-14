@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
@@ -19,7 +18,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
 import com.example.infomatch.R;
 import com.example.infomatch.data.GameResult;
 import com.example.infomatch.databinding.FragmentHighscoreBinding;
@@ -97,7 +95,7 @@ public class HighScoreFragment extends Fragment {
         Log.d("now", dateFormat.format(now));
         Log.d("now", timeFormat.format(now));
         try {
-            // image naming and path  to include sd card  appending name you choose for file
+
             String mPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/InfoMatch-Screenshots"  + "/" + dateFormat.format(now) +
                     timeFormat.format(now).replace(":", ".")+ ".jpg";
 
@@ -120,7 +118,7 @@ public class HighScoreFragment extends Fragment {
 
             shareScreenshot(imageFile);
         } catch (Throwable e) {
-            // Several error may come out with file handling or DOM
+
             e.printStackTrace();
         }
     }
