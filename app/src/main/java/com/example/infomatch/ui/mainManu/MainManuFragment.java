@@ -1,37 +1,19 @@
 package com.example.infomatch.ui.mainManu;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Paint;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import com.example.infomatch.R;
 import com.example.infomatch.databinding.FragmentMainmanuBinding;
-import com.example.infomatch.ui.game.GameViewModel;
 
 public class MainManuFragment extends Fragment {
 
@@ -52,7 +34,6 @@ public class MainManuFragment extends Fragment {
         binding.highScoreBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("MainManuFragment", "click");
                 Bundle bundle = new Bundle();
                 String userName = mainMenuViewModel.username;
                 bundle.putString("userName", userName);

@@ -1,23 +1,17 @@
 package com.example.infomatch.ui.main;
 
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ResourceCursorAdapter;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
-import androidx.room.RoomSQLiteQuery;
-
 import com.example.infomatch.R;
 import com.example.infomatch.databinding.FragmentActivityMainBinding;
-import com.example.infomatch.databinding.FragmentMainmanuBinding;
-import com.example.infomatch.ui.mainManu.MainManuViewModel;
 
 public class MainActivityFragment extends Fragment {
 
@@ -46,13 +40,6 @@ public class MainActivityFragment extends Fragment {
                 }
             }
         });
-
-//        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-//            @Override
-//            public void onCompletion(MediaPlayer mp) {
-//                mediaPlayer.release();
-//            }
-//        });
 
         return binding.getRoot();
     }

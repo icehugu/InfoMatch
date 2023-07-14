@@ -5,33 +5,20 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.CountDownTimer;
-
 import android.text.InputType;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import android.widget.GridLayout;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import com.example.infomatch.R;
-import com.example.infomatch.data.GameDataDao;
 import com.example.infomatch.data.GameResult;
 import com.example.infomatch.databinding.FragmentGameBinding;
-import com.example.infomatch.databinding.FragmentMainmanuBinding;
-
-import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
-import java.util.Random;
 
 public class GameFragment extends Fragment {
 
@@ -65,21 +52,12 @@ public class GameFragment extends Fragment {
             }
         });
 
-        //GridLayout gridLayout = binding.cardsGrid;
-        //gridLayout.setColumnCount(3);
-        //gridLayout.setRowCount(4);
+
         for (int i = 0; i < 12; i++) {
             int id = getResources().getIdentifier("button_"+i, "id", requireActivity().getPackageName());
             gridButtons[i] = (Button) view.findViewById(id);
 
-//            button.setLayoutParams(new ViewGroup.LayoutParams(
-//                    ViewGroup.LayoutParams.MATCH_PARENT,
-//                    ViewGroup.LayoutParams.MATCH_PARENT
-//            ));
-//
-//            GridLayout.LayoutParams params = new GridLayout.LayoutParams(GridLayout.spec(GridLayout.UNDEFINED, 1f),      GridLayout.spec(GridLayout.UNDEFINED, 1f));
-//            button.setLayoutParams(params);
-//            button.setTag("button"+ i);
+
 
             Button button = gridButtons[i];
             button.setOnClickListener(new View.OnClickListener() {
@@ -88,20 +66,20 @@ public class GameFragment extends Fragment {
 
                     mediaPlayer.start();
                     if (gameViewModel.button1 != null && gameViewModel.button2 != null) {
-                        gameViewModel.button1.setTextScaleX(0);
-                        gameViewModel.button2.setTextScaleX(0);
+                        gameViewModel.button1.setTextScaleX(0f);
+                        gameViewModel.button2.setTextScaleX(0f);
                         gameViewModel.button1 = null;
                         gameViewModel.button2 = null;
                         gameViewModel.curCombo = 0;
                     }
                     if(gameViewModel.button1 == null){
-                        button.setTextScaleX(0.8f);
+                        button.setTextScaleX(1f);
                         gameViewModel.button1 = button;
                     }
                     else {
 
                             if (gameViewModel.button1 != button) {
-                                button.setTextScaleX(0.8f);
+                                button.setTextScaleX(1f);
                                 gameViewModel.button2 = button;
                                 if (gameViewModel.checkPairOfCards(gameViewModel.button1, gameViewModel.button2)) {
                                     gameViewModel.button1.setClickable(false);
@@ -128,7 +106,6 @@ public class GameFragment extends Fragment {
                 }
             );
             gridButtons[i].setTextScaleX(0);
-            //gridLayout.addView(button);
         }
         gameViewModel.gridButtons = gridButtons;
         gameViewModel.setUpGame();

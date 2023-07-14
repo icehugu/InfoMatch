@@ -45,10 +45,4 @@ public class specialViewModel extends ViewModel {
         this.mMinute = mMinute;
     }
 
-    public String getDate(){
-        return this.mDay + "/" + this.mMonth + "/" + this.mYear;
-    }
-    public String getTime(){
-        return this.mHour + ":" + this.mMinute;
-    }
 }

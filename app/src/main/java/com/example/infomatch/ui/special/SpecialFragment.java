@@ -17,15 +17,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
-
-import com.example.infomatch.R;
-import com.example.infomatch.databinding.FragmentMainmanuBinding;
 import com.example.infomatch.databinding.FragmentSpecialBinding;
-import com.example.infomatch.ui.mainManu.MainManuViewModel;
-
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
+
 
 public class SpecialFragment extends Fragment {
 

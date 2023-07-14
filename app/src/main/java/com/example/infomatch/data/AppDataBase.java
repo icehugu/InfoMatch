@@ -20,12 +20,6 @@ public abstract class AppDataBase extends RoomDatabase {
     public static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-
-//    fun getDatabase(context: Context) = instance ?: synchronized(this) {
-//        Room.databaseBuilder(context.applicationContext, WorkoutItemDatabase::class.java, "db")
-//                    .build()
-//    }
-
     public static AppDataBase getDatabase(final Context context) {
         if (INSTANCE == null) {
             synchronized (AppDataBase.class) {

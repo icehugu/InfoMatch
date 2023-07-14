@@ -1,11 +1,8 @@
 package com.example.infomatch.gamePlay;
 
-import android.util.Log;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Random;
 
 public class Cards {
 
@@ -15,7 +12,6 @@ public class Cards {
 
     private Integer[] iArray;
     private HashMap<String, String> qaPair;
-    private Card[] cArray;
 
     public Cards(int numOfPairs, String[] qArray, String[] aArray) {
         this.numOfPairs = numOfPairs;
@@ -47,43 +43,6 @@ public class Cards {
         for (int i = 0; i<numOfPairs/2;i++) {
             this.qaPair.put(this.qArray[iArray[i]],this.aArray[iArray[i]]);
         }
-    }
-
-    public void setNumOfPairs(int numOfPairs) {
-        this.numOfPairs = numOfPairs;
-    }
-
-
-    public void setqArray(String[] qArray) {
-        this.qArray = qArray;
-    }
-
-    public void setaArray(String[] aArray) {
-        this.aArray = aArray;
-    }
-
-    public void setcArray(Card[] cArray) {
-        this.cArray = cArray;
-    }
-
-    public int getNumOfPairs() {
-        return numOfPairs;
-    }
-
-    public String[] getqArray() {
-        return qArray;
-    }
-
-    public String[] getaArray() {
-        return aArray;
-    }
-
-    public Integer[] getiArray() {
-        return iArray;
-    }
-
-    public Card[] getcArray() {
-        return cArray;
     }
 
     public HashMap<String, String> getQaPair() {

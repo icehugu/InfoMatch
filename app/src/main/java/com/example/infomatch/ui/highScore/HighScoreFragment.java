@@ -6,8 +6,6 @@ import android.graphics.Canvas;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.MediaStore;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +19,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.infomatch.R;
 import com.example.infomatch.data.GameResult;
 import com.example.infomatch.databinding.FragmentHighscoreBinding;
-import com.example.infomatch.databinding.FragmentMainmanuBinding;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.text.DateFormat;
@@ -42,7 +38,6 @@ public class HighScoreFragment extends Fragment {
         binding.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("MainManuFragment", "click");
 
                 Navigation.findNavController(v).popBackStack();
             }
@@ -62,10 +57,7 @@ public class HighScoreFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         highScoreViewModel.getAll().observe(getViewLifecycleOwner(), item -> {
             binding.gameResultRecyclerView.setAdapter(new HighScoreListAdapter(item, new HighScoreListAdapter.ItemListener() {
-                @Override
-                public void onItemClicked(int index) {
 
-                }
 
                 @Override
                 public void onItemLongClicked(int index) {
@@ -92,21 +84,19 @@ public class HighScoreFragment extends Fragment {
         android.text.format.DateFormat.format("yyyyMMddhhmmss", now);
         DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(requireContext());
         DateFormat timeFormat = android.text.format.DateFormat.getTimeFormat(requireContext());
-        Log.d("now", dateFormat.format(now));
-        Log.d("now", timeFormat.format(now));
+
         try {
 
             String mPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/InfoMatch-Screenshots"  + "/" + dateFormat.format(now) +
                     timeFormat.format(now).replace(":", ".")+ ".jpg";
 
-            // create bitmap screen capture
+
             View v1 = requireActivity().getWindow().getDecorView().getRootView();
-            //v1.setDrawingCacheEnabled(true);
 
             Bitmap bitmap = Bitmap.createBitmap(v1.getMeasuredWidth(), v1.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
             Canvas canvas = new Canvas(bitmap);
             v1.draw(canvas);
-            //v1.setDrawingCacheEnabled(false);
+
 
             File imageFile = new File(mPath);
 
@@ -124,13 +114,8 @@ public class HighScoreFragment extends Fragment {
     }
 
     private void shareScreenshot(File imageFile) {
-//        Intent sendIntent = new Intent();
-//        sendIntent.setAction(Intent.ACTION_SEND);
+
         Uri uri = FileProvider.getUriForFile(requireContext(), requireContext().getApplicationContext().getPackageName() + ".provider", imageFile);
-//        sendIntent.setDataAndType(uri, "image/jpg");
-//
-//        Intent shareIntent = Intent.createChooser(sendIntent, "Share screenshot");
-//        startActivity(shareIntent);
 
         Intent shareIntent = new Intent();
         shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);

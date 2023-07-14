@@ -1,6 +1,5 @@
 package com.example.infomatch.ui.game;
 
-import android.annotation.SuppressLint;
 import android.app.Application;
 import android.media.MediaPlayer;
 import android.os.CountDownTimer;
@@ -8,9 +7,6 @@ import android.widget.Button;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
-
-import com.example.infomatch.R;
 import com.example.infomatch.data.GameResult;
 import com.example.infomatch.gamePlay.Cards;
 import com.example.infomatch.repository.GameDataRepository;
@@ -199,9 +195,11 @@ public class GameViewModel extends AndroidViewModel {
             this.gridButtons[this.cardsPositionsArray[i*2]].setText(this.cardGame.getQaPair().keySet().toArray()[i].toString());
             this.gridButtons[this.cardsPositionsArray[i*2]].setTextScaleX(0);
             this.gridButtons[this.cardsPositionsArray[i*2]].setClickable(true);
+            this.gridButtons[this.cardsPositionsArray[i*2]].setBackgroundColor(0xFF6200EE);
             this.gridButtons[this.cardsPositionsArray[(i*2)+1]].setText(this.cardGame.getQaPair().get(this.cardGame.getQaPair().keySet().toArray()[i].toString()));
             this.gridButtons[this.cardsPositionsArray[(i*2)+1]].setTextScaleX(0);
             this.gridButtons[this.cardsPositionsArray[(i*2)+1]].setClickable(true);
+            this.gridButtons[this.cardsPositionsArray[(i*2)+1]].setBackgroundColor(0xFF6200EE);
         }
     }
 

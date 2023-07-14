@@ -44,9 +44,6 @@
                 android:layout_marginBottom="10dp"
                 android:hint="@string/enter_user_name"
                 android:inputType="text"/>
-            <!--            android:background="@color/darkGreyBlue"-->
-    <!--            android:textColor="@color/white"-->
-    <!--            android:textColorHint="@color/brightRed" />-->
 
         </com.google.android.material.textfield.TextInputLayout>
 
