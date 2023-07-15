@@ -84,9 +84,8 @@ public class HighScoreFragment extends Fragment {
         Date now = new Date();
         DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(requireContext());
         DateFormat timeFormat = android.text.format.DateFormat.getTimeFormat(requireContext());
-        Log.d("date", dateFormat.format(now));
+
         try {
-            
             String mPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/InfoMatch-Screenshots"  + "/" + dateFormat.format(now).replace("/",".") +
                     timeFormat.format(now).replace(":", ".")+ ".jpg";
 
