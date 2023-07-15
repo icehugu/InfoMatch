@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -86,8 +87,8 @@ public class HighScoreFragment extends Fragment {
         DateFormat timeFormat = android.text.format.DateFormat.getTimeFormat(requireContext());
 
         try {
-
-            String mPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/InfoMatch-Screenshots"  + "/" + dateFormat.format(now) +
+            
+            String mPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/InfoMatch-Screenshots"  + "/" + dateFormat.format(now).replace("/",".") +
                     timeFormat.format(now).replace(":", ".")+ ".jpg";
 
 
