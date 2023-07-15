@@ -109,10 +109,29 @@ public class GameFragment extends Fragment {
         }
         gameViewModel.gridButtons = gridButtons;
         gameViewModel.setUpGame();
+
+        binding.floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(gameViewModel.timer) {
+                    gameViewModel.timerStop();
+                }
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setMessage(getResources().getString(R.string.explain));
+                builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+                        if(gameViewModel.timer) {
+                            gameViewModel.timerResume();
+                        }
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
         return view;
-
-
-
     }
 
     @Override
