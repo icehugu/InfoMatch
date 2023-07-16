@@ -189,6 +189,7 @@ public class GameViewModel extends AndroidViewModel {
 
     public void nextCards(){
         Collections.shuffle(Arrays.asList(this.cardsPositionsArray));
+        this.cardGame.reShuffle();
         this.button1 = null;
         this.button2 = null;
         for (int i = 0; i < 6; i++) {
