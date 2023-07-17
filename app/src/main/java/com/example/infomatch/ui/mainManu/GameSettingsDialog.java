@@ -35,7 +35,6 @@ public  class GameSettingsDialog extends DialogFragment {
         Spinner spinner = (Spinner) view.findViewById(R.id.spinner_num_of_cards);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(requireContext(),
                 R.array.cards_amount, android.R.layout.simple_spinner_item);
-
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.radiogroup);
         spinner.setAdapter(adapter);
@@ -72,6 +71,7 @@ public  class GameSettingsDialog extends DialogFragment {
                 .setNegativeButton(getResources().getString(R.string.other_time), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
+
                     }
                 });
         return builder.create();

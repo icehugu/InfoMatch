@@ -2,6 +2,7 @@ package com.example.infomatch.ui.mainManu;
 
 import android.content.Intent;
 import android.graphics.Paint;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -34,6 +35,7 @@ public class MainManuFragment extends Fragment {
         binding.highScoreBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                music.stopMusic();
                 Bundle bundle = new Bundle();
                 String userName = mainMenuViewModel.username;
                 bundle.putString("userName", userName);
@@ -54,7 +56,7 @@ public class MainManuFragment extends Fragment {
         binding.exitBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
+                music.stopMusic();
                 Navigation.findNavController(v).popBackStack();
             }
         });
@@ -62,7 +64,7 @@ public class MainManuFragment extends Fragment {
         binding.specialBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
+                music.stopMusic();
                 Navigation.findNavController(v).navigate(R.id.action_mainManuFragment_to_specialFragment);
             }
         });
@@ -73,7 +75,9 @@ public class MainManuFragment extends Fragment {
                 openWebPage("https://github.com/icehugu/InfoMatch");
             }
         });
-
+//        Thread thread = new Thread(){
+//
+//        }
         return view;
     }
 
@@ -93,5 +97,6 @@ public class MainManuFragment extends Fragment {
 
 
 }
+
 
 
