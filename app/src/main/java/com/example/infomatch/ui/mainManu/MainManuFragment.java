@@ -20,7 +20,7 @@ public class MainManuFragment extends Fragment {
 
     private FragmentMainmanuBinding binding;
     private MainManuViewModel mainMenuViewModel ;
-
+    private MainManuMusic music;
     private GameSettingsDialog dialog;
     @Nullable
     @Override
@@ -29,6 +29,10 @@ public class MainManuFragment extends Fragment {
         View view = binding.getRoot();
         mainMenuViewModel = new ViewModelProvider(this).get(MainManuViewModel.class);
         dialog = new GameSettingsDialog();
+        MediaPlayer mediaPlayer = MediaPlayer.create(requireContext(), R.raw.background);
+        music = new MainManuMusic(mediaPlayer);
+        Thread t = new Thread(music);
+        t.start();
         mainMenuViewModel.username = (getArguments().getString("userName"));
         binding.userName.setText(getResources().getString(R.string.hello) + " " + mainMenuViewModel.username);
         binding.sourceCode.setPaintFlags(binding.sourceCode.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
@@ -84,6 +88,7 @@ public class MainManuFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        music.stopMusic();
         binding = null;
     }
 
